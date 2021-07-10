@@ -1,5 +1,7 @@
 # ISMB2021-workshop
 
+Before getting started, follow these [instructions](materials/Preparation_Instructions.md) to download the necessary programs.
+
 # 22 July, 2021
 ## Lectures
 ## [Introduction: Reproducible omics data analysis workflows](presentations/Intro.pdf)
