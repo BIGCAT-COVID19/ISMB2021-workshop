@@ -8,9 +8,21 @@
 * Martina Summer-Kutmon
 * Scooter Morris
 
+<hr/>
+
 ### Requirements and preparation
 * The audience for this tutorial session are bioinformaticians or life scientists interested in learning to use automation in R to perform pathway and network analysis of transcriptomics data. Participants should have some prior experience with R data analysis.
 * Follow the [instructions](materials/Preparation_Instructions.md) to install all required software for the tutorial.
+
+<hr/>
+
+### Program
+
+| Date | Time | Title | Presenter | Link |
+|:----:|------|-------|------|------|
+| 22 July 2021 | 15:00 UTC | Tutorial opening | Lauren Dupuis | Presentation |
+|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | Presentation |
+|  | 15:45 UTC | Introduction Cytoscape  | Scooter Morris | [Intro](https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html), [Automation](https://cytoscape.org/cytoscape-tutorials/presentations/intro-automation-2021-ismb.html) |
 
 # 22 July, 2021
 ## Lectures
