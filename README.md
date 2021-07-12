@@ -27,7 +27,7 @@
 |  | 17:30 UTC | Break | |  |
 |  | 17:45 UTC | Hands-on Cytsocape 2 | Scooter Morris | Practical |
 |  | 18:30 UTC | Wrap up day 1 | Lauren Dupuis | [Slides](presentations/Wrap-up.pdf) |
-|:----:|------|-------|------|------|
+| | | | | |
 | 23 July 2021 | 15:00 UTC | Introduction workflows | Martina Kutmon | Slides |
 |  | 15:35 UTC | Workflow 1 | Martina Kutmon | Practical |
 |  | 16:15 UTC | Workflow 2 | Martina Kutmon | Practical |
