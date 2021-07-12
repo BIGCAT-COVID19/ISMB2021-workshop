@@ -1,7 +1,8 @@
 # ISMB2021 Tutorial
 ### Reproducible omics data analysis workflows with the COVID-19 Disease Map, WikiPathways and Cytoscape
 
-**Date:** 22-23 July 2021<br/>
+**Date:** 22-23 July 2021
+
 **Organizers**: 
 * Lauren Dupuis
 * Martina Summer-Kutmon
