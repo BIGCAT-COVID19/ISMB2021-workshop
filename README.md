@@ -40,4 +40,4 @@
 
 ### Contact
 
-If you have any questions, send us an email or submit and issue in the [issue tracker](https://github.com/BIGCAT-COVID19/ISMB2021-workshop/issues) and we will get back to you as soon as possible.
+If you have any questions, send us an email or submit an issue in the [issue tracker](https://github.com/BIGCAT-COVID19/ISMB2021-workshop/issues) and we will get back to you as soon as possible.
