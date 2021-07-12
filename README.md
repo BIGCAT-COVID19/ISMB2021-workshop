@@ -12,7 +12,7 @@
 
 ### Requirements and preparation
 * The audience for this tutorial session are bioinformaticians or life scientists interested in learning to use automation in R to perform pathway and network analysis of transcriptomics data. Participants should have some prior experience with R data analysis.
-* Follow the [instructions](materials/Preparation_Instructions.md) to install all required software for the tutorial.
+* Follow the [instructions](Preparation.md) to install all required software for the tutorial.
 
 <hr/>
 
