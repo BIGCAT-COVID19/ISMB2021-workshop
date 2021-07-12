@@ -1,5 +1,5 @@
 # ISMB2021 Tutorial
-## Reproducible omics data analysis workflows with the COVID-19 Disease Map, WikiPathways and Cytoscape
+### Reproducible omics data analysis workflows with the COVID-19 Disease Map, WikiPathways and Cytoscape
 
 **Date:** 22-23 July 2021<br/>
 **Organizers**: 
@@ -7,7 +7,9 @@
 * {% avatar mkutmon %} Martina Summer-Kutmon
 * {% avatar scootermorris %} Scooter Morris
 
-Before getting started, follow these [instructions](materials/Preparation_Instructions.md) to download the necessary programs.
+### Requirements and preparation
+* The audience for this tutorial session are bioinformaticians or life scientists interested in learning to use automation in R to perform pathway and network analysis of transcriptomics data. Participants should have some prior experience with R data analysis.
+* Follow the [instructions](materials/Preparation_Instructions.md) to install all required software for the tutorial.
 
 # 22 July, 2021
 ## Lectures
