@@ -3,9 +3,9 @@
 
 **Date:** 22-23 July 2021<br/>
 **Organizers**: 
-* {% avatar LaurenDupuis %} Lauren Dupuis
-* {% avatar mkutmon %} Martina Summer-Kutmon
-* {% avatar scootermorris %} Scooter Morris
+* Lauren Dupuis
+* Martina Summer-Kutmon
+* Scooter Morris
 
 ### Requirements and preparation
 * The audience for this tutorial session are bioinformaticians or life scientists interested in learning to use automation in R to perform pathway and network analysis of transcriptomics data. Participants should have some prior experience with R data analysis.
