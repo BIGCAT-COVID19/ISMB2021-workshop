@@ -20,29 +20,19 @@
 
 | Date | Time | Title | Presenter | Link |
 |:----:|------|-------|------|------|
-| 22 July 2021 | 15:00 UTC | Tutorial opening | Lauren Dupuis | Presentation |
-|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | Presentation |
+| 22 July 2021 | 15:00 UTC | Tutorial opening | Lauren Dupuis | Slides |
+|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | Slides |
 |  | 15:45 UTC | Introduction Cytoscape  | Scooter Morris | [Intro](https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html), [Automation](https://cytoscape.org/cytoscape-tutorials/presentations/intro-automation-2021-ismb.html) |
 |  | 16:30 UTC | Hands-on Cytsocape 1 | Scooter Morris | Practical |
 |  | 17:30 UTC | Break | |  |
 |  | 17:45 UTC | Hands-on Cytsocape 2 | Scooter Morris | Practical |
-|  | 18:30 UTC | Wrap up day 1 | Lauren Dupuis | [Slides](presentations/Wrap-up.pdf)) |
+|  | 18:30 UTC | Wrap up day 1 | Lauren Dupuis | [Slides](presentations/Wrap-up.pdf) |
+|:----:|------|-------|------|------|
+| 23 July 2021 | 15:00 UTC | Introduction workflows | Martina Kutmon | Slides |
+|  | 15:35 UTC | Workflow 1 | Martina Kutmon | Practical |
+|  | 16:15 UTC | Workflow 2 | Martina Kutmon | Practical |
+|  | 17:00 UTC | Break | |  |
+|  | 17:15 UTC | Workflow 3 | Martina Kutmon | Practical |
+|  | 18:00 UTC | Wrap up day 2 | Lauren Dupuis | Slides, Quiz |
+|  | 18:30 UTC | Q&A | all | |
 
-
-
-# 22 July, 2021
-## Lectures
-## [Introduction: Reproducible omics data analysis workflows](presentations/Intro.pdf)
-## [Introduction to Cytoscape](https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html)
-## [Introduction to Cytoscape Automation](https://cytoscape.org/cytoscape-tutorials/presentations/intro-automation-2021-ismb.html)
-## [Wrap-up and Outlook](presentations/Wrap-up.pdf)
-
-## Practicals
-
-
-# 23 July, 2021
-## Lectures
-
-
-## Practicals
-## [Workflow 1](https://github.com/BIGCAT-COVID19/COVID19-NHBE-Workflow/blob/335a38afcf286b60f4222c08d00c9ba67acb781a/Workflow_PathwayNetworkAnalysis.Rmd)
