@@ -36,3 +36,8 @@
 |  | 18:00 UTC | Wrap up day 2 | Lauren Dupuis | Slides, Quiz |
 |  | 18:30 UTC | Q&A | all | |
 
+<hr/>
+
+### Contact
+
+If you have any questions, send us an email or submit and issue in the [issue tracker](https://github.com/BIGCAT-COVID19/ISMB2021-workshop/issues) and we will get back to you as soon as possible.
