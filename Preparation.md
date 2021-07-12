@@ -10,7 +10,7 @@ Please install the following tools (available on all platforms):
 
 <hr/>
 
-**Required R-packages**
+**Install required R-packages**
 
 Install BioCManager and required packages
 ```R
