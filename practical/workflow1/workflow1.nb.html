@@ -1930,12 +1930,11 @@ wpid2name &lt;- unique(pwy2gene %&gt;% dplyr::select(wpid,name)) #TERM2NAME</cod
 <p>The clusterProfiler R-package is used to perform overrepresentation analysis (ORA). The function can be easily replaced to use other enrichment methods (GSEA / rSEA / etc).</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmtnZC5nZW5lcyA8LSB1bmlxdWUoZGF0YS5OSEJFWyxjKDEsMildKVxuXG4jIFRPRE8hIGNvbXBsZXRlIHRoZSBjb2RlIHRvIGV4dHJhY3QgdGhlIGRpZmZlcmVudGlhbGx5IGV4cHJlc3NlZCBnZW5lcyBpbiBkYXRhLk5IQkUgKGRlY2lkZSB3aGF0IGN1dG9mZiBmb3IgcHZhbHVlIGFuZCBsb2cyRkMgeW91IHdvdWxkIGNob29zZSlcbmRlZyA8LSB1bmlxdWUoZGF0YS5OSEJFWyFpcy5uYShkYXRhLk5IQkUkcHZhbHVlKSAmIGRhdGEuTkhCRSRwdmFsdWUgPCAwLjA1ICYgYWJzKGRhdGEuTkhCRSRsb2cyRm9sZENoYW5nZSkgPiAwLjU4LGMoMSwyKV0pXG4jZGVzIDwtIFxuXG5ld3AgPC0gY2x1c3RlclByb2ZpbGVyOjplbnJpY2hlcihcbiAgZGVnJEdlbmVJZCxcbiAgdW5pdmVyc2UgPSBia2dkLmdlbmVzJEdlbmVJZCxcbiAgcEFkanVzdE1ldGhvZCA9IFwiZmRyXCIsXG4gIHB2YWx1ZUN1dG9mZiA9IDAuMDUsXG4gIFRFUk0yR0VORSA9IHdwaWQyZ2VuZSxcbiAgVEVSTTJOQU1FID0gd3BpZDJuYW1lKVxuXG5ld3AucmVzIDwtIGFzLmRhdGEuZnJhbWUoZXdwKSBcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmtnZC5nZW5lcyA8LSB1bmlxdWUoZGF0YS5OSEJFWyxjKDEsMildKVxuXG4jIFRPRE8hIGNvbXBsZXRlIHRoZSBjb2RlIHRvIGV4dHJhY3QgdGhlIGRpZmZlcmVudGlhbGx5IGV4cHJlc3NlZCBnZW5lcyBpbiBkYXRhLk5IQkUgKGRlY2lkZSB3aGF0IGN1dG9mZiBmb3IgcHZhbHVlIGFuZCBsb2cyRkMgeW91IHdvdWxkIGNob29zZSlcbmRlZyA8LSAuLi4/Li4uXG5cbmV3cCA8LSBjbHVzdGVyUHJvZmlsZXI6OmVucmljaGVyKFxuICBkZWckR2VuZUlkLFxuICB1bml2ZXJzZSA9IGJrZ2QuZ2VuZXMkR2VuZUlkLFxuICBwQWRqdXN0TWV0aG9kID0gXCJmZHJcIixcbiAgcHZhbHVlQ3V0b2ZmID0gMC4wNSxcbiAgVEVSTTJHRU5FID0gd3BpZDJnZW5lLFxuICBURVJNMk5BTUUgPSB3cGlkMm5hbWUpXG5cbmV3cC5yZXMgPC0gYXMuZGF0YS5mcmFtZShld3ApIFxuYGBgIn0= -->
 <pre class="r"><code>bkgd.genes &lt;- unique(data.NHBE[,c(1,2)])
 
 # TODO! complete the code to extract the differentially expressed genes in data.NHBE (decide what cutoff for pvalue and log2FC you would choose)
-deg &lt;- unique(data.NHBE[!is.na(data.NHBE$pvalue) &amp; data.NHBE$pvalue &lt; 0.05 &amp; abs(data.NHBE$log2FoldChange) &gt; 0.58,c(1,2)])
-#des &lt;- 
+deg &lt;- ...?...
 
 ewp &lt;- clusterProfiler::enricher(
   deg$GeneId,
