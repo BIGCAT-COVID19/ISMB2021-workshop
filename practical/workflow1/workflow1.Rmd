@@ -58,7 +58,7 @@ which is related to the following publication:
 Blanco-Melo, Daniel, et al. "Imbalanced host response to SARS-CoV-2 drives development of COVID-19." Cell 181.5 (2020): 1036-1045.
 
 ```{r}
-GSE147507_raw_counts <- read.csv("../data/GSE147507_RawReadCounts_Human.tsv", sep = "\t")
+GSE147507_raw_counts <- read.csv("data/GSE147507_RawReadCounts_Human.tsv", sep = "\t")
 # filter NHBE samples
 data <- GSE147507_raw_counts[,c(2:7)]
 row.names(data) <- GSE147507_raw_counts$X
@@ -131,7 +131,7 @@ Let's use a volcano plot to visualize the result of the differential gene expres
 ```{r fig1, fig.width=8, fig.height=6}
 EnhancedVolcano(data.res.df, title = "NHBE cell line", lab = data.res.df$GeneID, x = 'log2FoldChange', y = 'pvalue', pCutoff = 0.05, FCcutoff = 0.585, labSize = 3)
 
-write.table(data.NHBE, file="output/DEG_Data.txt", sep="\t", quote=FALSE, row.names = FALSE)
+write.table(data.NHBE, file="DEG_Data.txt", sep="\t", quote=FALSE, row.names = FALSE)
 ```
 
 > Interpretation
@@ -147,8 +147,8 @@ We want to perform pathway enrichment with the gene sets of all pathway models i
 
 ```{r}
 # combine WikiPathways and COVID19 Disease Map gene sets
-wp2gene <- readPathwayGMT("../data/wikipathways-20210710-gmt-Homo_sapiens.gmt")
-dm2gene <- readPathwayGMT("../data/COVID19_DiseaseMap_June2021.gmt")
+wp2gene <- readPathwayGMT("data/wikipathways-20210710-gmt-Homo_sapiens.gmt")
+dm2gene <- readPathwayGMT("data/COVID19_DiseaseMap_June2021.gmt")
 pwy2gene <- dplyr::bind_rows(wp2gene, dm2gene)
 
 wpid2gene <- pwy2gene %>% dplyr::select(wpid,gene) #TERM2GENE
@@ -203,7 +203,7 @@ ggplot(ewp[1:dim(ewp.res)[1]], aes(x=reorder(Description, -pvalue), y=Count)) +
   theme(axis.text=element_text(size=10)) + 
   theme(legend.position="none")
 
-write.table(ewp.res, file="output/enrich_res.txt", sep="\t", quote=FALSE, row.names = FALSE)
+write.table(ewp.res, file="enrich_res.txt", sep="\t", quote=FALSE, row.names = FALSE)
 ```
 
 > Interpretation
@@ -251,9 +251,9 @@ RCy3::setVisualStyle("WikiPathways")
 
 ```{r}
 # Saving output
-png.file <- file.path(getwd(), "figures/pathway-viz.png")
+png.file <- file.path(getwd(), "pathway-viz.png")
 exportImage(png.file,'PNG', zoom = 500)
-cys.file <- file.path(getwd(), "output/pathway-viz.cys")
+cys.file <- file.path(getwd(), "pathway-viz.cys")
 saveSession(cys.file) 
 
 #comment following line if you want to manipulate the visualization in Cytoscape
