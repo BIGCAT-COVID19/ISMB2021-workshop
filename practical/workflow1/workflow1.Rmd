@@ -5,12 +5,13 @@ author: "Martina Summer-Kutmon"
 date: "20 July 2021"
 version: 1.0
 comment: "adapted from Alexander Pico's Pathway Analysis Vignette"
+license: "MIT License"
 ---
 
 # General instructions (read before running the code snippets)
 In this first workflow, we will run the transcriptomics data pre-processing, enrichment analysis with the Disease Map and WikiPathways, and visualize the data on the pathway models.
 
-* The script contains xxx code snippets which should be run one after the other. 
+* The script contains 10 code snippets which should be run one after the other. 
 * Make sure all the required packages are installed beforehand (BiocManager::install(...)). 
 * Make sure you have Cytoscape installed (version 3.8.0+) and running before you start running the script. 
 
