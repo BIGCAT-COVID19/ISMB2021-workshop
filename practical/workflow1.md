@@ -1,2 +1,15 @@
 ## Workflow 1
-### Pathway enrichment / network visualization / drug-target extension
+
+* Differential gene expression analysis
+* Pathway enrichment analysis
+* Pathway visualization
+
+----
+
+We'll work in breakout rooms with 3-4 people. 
+
+*How to get started:*
+- Go to https://bigcat-covid19.github.io/ISMB2021-workshop/practical/workflow1/workflow1.nb.html
+- In the top left, select "Code" > "Download Rmd" file
+- Download and unzip [data.zip](https://github.com/BIGCAT-COVID19/ISMB2021-workshop/raw/main/practical/workflow1/data.zip) file
+
