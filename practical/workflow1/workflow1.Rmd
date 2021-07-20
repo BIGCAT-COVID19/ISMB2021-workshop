@@ -1,0 +1,260 @@
+---
+title: "ISMB2021 Tutorial 8 - Workflow 1"
+output: html_notebook
+author: "Martina Summer-Kutmon"
+date: "20 July 2021"
+version: 1.0
+comment: "adapted from Alexander Pico's Pathway Analysis Vignette"
+---
+
+# General instructions (read before running the code snippets)
+In this first workflow, we will run the transcriptomics data pre-processing, enrichment analysis with the Disease Map and WikiPathways, and visualize the data on the pathway models.
+
+* The script contains xxx code snippets which should be run one after the other. 
+* Make sure all the required packages are installed beforehand (BiocManager::install(...)). 
+* Make sure you have Cytoscape installed (version 3.8.0+) and running before you start running the script. 
+
+*** 
+
+# Setup
+
+Loading libraries
+```{r}
+options(connectionObserver = NULL)
+
+library(readr)
+library(DESeq2)
+library(here)
+library(dplyr)
+library(tibble)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(tidyverse)
+library(rWikiPathways)
+library(RCy3)
+library(RColorBrewer)
+library(EnhancedVolcano)
+library(readr)
+library(reshape)
+library(data.table)
+library(svglite)
+```
+
+```{r}
+path <- here()
+setwd(path)
+```
+
+*** 
+
+## Load dataset
+
+We take the series 1 from the following dataset (NHBE mock treated versus SARS-CoV-2 infected): 
+* https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE147507
+
+which is related to the following publication:
+
+Blanco-Melo, Daniel, et al. "Imbalanced host response to SARS-CoV-2 drives development of COVID-19." Cell 181.5 (2020): 1036-1045.
+
+```{r}
+GSE147507_raw_counts <- read.csv("../data/GSE147507_RawReadCounts_Human.tsv", sep = "\t")
+# filter NHBE samples
+data <- GSE147507_raw_counts[,c(2:7)]
+row.names(data) <- GSE147507_raw_counts$X
+rm(GSE147507_raw_counts)
+
+# formatting the data table
+data.col <- as.data.frame(matrix(NA,length(names(data)),1))
+names(data.col) <- c("condition")
+row.names(data.col) <- names(data)
+data.col$condition <- gsub("Series1_", "", row.names(data.col))
+data.col$condition <- factor(gsub("_[1-3]$", "", data.col$condition))
+
+head(data.col)
+head(data)
+```
+
+> Explore the two created data frames: data and data.col
+
+- **Q1**: How many samples are in the dataset?
+
+***
+
+## Differential gene expression analysis
+
+Next, we will run the differential gene expression analysis using the R-package DESeq2. 
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = as.matrix(data),colData = data.col, design = ~ condition)
+## Set control
+dds$condition <- relevel(dds$condition, ref = levels(data.col$condition)[1])
+## Carry out diff exp
+dds <- DESeq(dds)
+## See the comparisons carried out
+data.comp <- resultsNames(dds)
+## Get results table
+data.res <- results(dds, name=data.comp[2])
+
+data.res.df <- as.data.frame(data.res) %>% 
+    tibble::rownames_to_column(var = "GeneID") %>% 
+    dplyr::select(c(GeneID, log2FoldChange, pvalue, padj, stat)) %>% 
+    tibble::column_to_rownames(var = "GeneID") 
+
+data.res.df <- data.table::setDT(data.res.df, keep.rownames = TRUE)[]
+colnames(data.res.df)[1] <- "GeneID"
+
+# identifier mapping 
+hgcn2entrez <- clusterProfiler::bitr(data.res.df$GeneID, fromType = "SYMBOL",toType = c("ENTREZID","SYMBOL","ENSEMBL"), OrgDb = org.Hs.eg.db)
+data.mapped <- merge(data.res.df, hgcn2entrez, by.x="GeneID", by.y="SYMBOL", all.x = TRUE)
+data.mapped <- subset(data.mapped, select=c(6,1:5,7))
+rm(hgcn2entrez,dds,data.res)
+
+# filter genes without Entrez Gene identifier
+data.NHBE <- data.mapped %>% tidyr::drop_na(ENTREZID)
+colnames(data.NHBE)[2] <- "GeneName"
+colnames(data.NHBE)[1] <- "GeneId"
+```
+
+
+> Let's explore the differential gene expression analysis result
+
+- **Q2**: How many genes are significantly up- or down-regulated after COVID19 infection? (filter data.NHBE)
+- **Q3**: Why do some genes have NA values? (check: https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#why-are-some-p-values-set-to-na)
+
+***
+
+## Data visualization
+
+Let's use a volcano plot to visualize the result of the differential gene expression analysis result and save the data table in a file to keep a record. 
+
+```{r fig1, fig.width=8, fig.height=6}
+EnhancedVolcano(data.res.df, title = "NHBE cell line", lab = data.res.df$GeneID, x = 'log2FoldChange', y = 'pvalue', pCutoff = 0.05, FCcutoff = 0.585, labSize = 3)
+
+write.table(data.NHBE, file="output/DEG_Data.txt", sep="\t", quote=FALSE, row.names = FALSE)
+```
+
+> Interpretation
+
+- **Q4**: Are there more up- or down-regulated genes? What cutoffs have been used for pvalue and log2FC (see line 132)?
+- **Q5**: What are the most significantly changed genes? Do a quick Pubmed search to see if they have a known link to COVID19. 
+
+***
+
+## Pathway collection
+
+We want to perform pathway enrichment with the gene sets of all pathway models in WikiPathways (human only) and the COVID-19 Disease Map maps.
+
+```{r}
+# combine WikiPathways and COVID19 Disease Map gene sets
+wp2gene <- readPathwayGMT("../data/wikipathways-20210710-gmt-Homo_sapiens.gmt")
+dm2gene <- readPathwayGMT("../data/COVID19_DiseaseMap_June2021.gmt")
+pwy2gene <- dplyr::bind_rows(wp2gene, dm2gene)
+
+wpid2gene <- pwy2gene %>% dplyr::select(wpid,gene) #TERM2GENE
+wpid2name <- unique(pwy2gene %>% dplyr::select(wpid,name)) #TERM2NAME
+```
+
+> Interpretation
+
+- **Q6**: The WikiPathways human collection and the Disease Map have been combined. How many pathways are in the collection? (wpid2name)
+
+***
+
+## Pathway enrichment
+
+The clusterProfiler R-package is used to perform overrepresentation analysis (ORA). The function can be easily replaced to use other enrichment methods (GSEA / rSEA / etc). 
+
+```{r}
+bkgd.genes <- unique(data.NHBE[,c(1,2)])
+
+# TODO! complete the code to extract the differentially expressed genes in data.NHBE (decide what cutoff for pvalue and log2FC you would choose)
+deg <- ...?...
+
+ewp <- clusterProfiler::enricher(
+  deg$GeneId,
+  universe = bkgd.genes$GeneId,
+  pAdjustMethod = "fdr",
+  pvalueCutoff = 0.05,
+  TERM2GENE = wpid2gene,
+  TERM2NAME = wpid2name)
+
+ewp.res <- as.data.frame(ewp) 
+```
+
+> Interpretation
+
+- **Q7**: Why did you select the cutoffs for the differentially expressed genes (deg)?
+- **Q8**: How many of the measured and differentially expressed genes are actually present in at least one of the pathway models - actual background list? Hint: information is available in the ewp object.
+#length(ewp@universe)
+#length(deg$GeneId[deg$GeneId %in% unique(wp2gene$gene)])
+
+***
+
+## Visualize enrichment analysis result
+
+Enrichment analysis results are often visualized in tables. You can also use a barplot, dotplot or emapplot if useful.  
+
+```{r fig2, fig.width=7, fig.height=7}
+ggplot(ewp[1:dim(ewp.res)[1]], aes(x=reorder(Description, -pvalue), y=Count)) +
+  geom_bar(stat ="identity", fill="#BA8CD7") +
+  coord_flip() +
+  labs(x="", y="DEG gene count", fill="") +
+  theme(axis.text=element_text(size=10)) + 
+  theme(legend.position="none")
+
+write.table(ewp.res, file="output/enrich_res.txt", sep="\t", quote=FALSE, row.names = FALSE)
+```
+
+> Interpretation
+
+- **Q9**: If you look at the list of pathways affected, what kind of pathways show up? Do you see Disease Map pathways (starting with MINERVA)? 
+
+***
+
+# Pathway data visualization
+
+The pathways can then be visualized with the gene expression data as shown with the 
+"Type I Interferon Induction and Signaling During SARS-CoV-2 Infection" (WP4868) pathway from the WikiPathways COVID-19 portal. 
+
+You can repeat the process with any of the WikiPathways pathways.
+
+```{r}
+RCy3::cytoscapePing()
+installApp('WikiPathways') 
+
+# open pathway in Cytoscape
+RCy3::commandsRun('wikipathways import-as-pathway id=WP4868') 
+toggleGraphicsDetails()
+loadTableData(data.NHBE, data.key.column = "ENSEMBL", table.key.column = "Ensembl")
+
+# apply visual style with ?setNodeColorMapping
+# create a gradient visualization for column: log2FoldChange
+# Important add: style.name="WikiPathways"
+# TODO!
+setNodeColorMapping(...?...)
+
+RCy3::setVisualStyle("WikiPathways")
+
+```
+
+> Interpretation
+
+- **Q10**: Which gradient did you choose for log2FC and why?
+- **Q11**: Is the Type I interferon induction pathway up- or down-regulated after COVID19 infection? Is that as expected? 
+
+*Note*: If you want to visualize the data on the pathways from the Disease Map, you need to export the pathway model as an SBML file and import it in Cytoscape using the cySBML app. Alternatively, you can request an account for MINERVA and upload your own dataset and create an overlay on the map (https://covid19map.elixir-luxembourg.org/minerva/index.xhtml?id=covid19_map_17Jun21 > OVERLAYS). 
+
+***
+
+## Save Cytoscape output and session
+
+```{r}
+# Saving output
+png.file <- file.path(getwd(), "figures/pathway-viz.png")
+exportImage(png.file,'PNG', zoom = 500)
+cys.file <- file.path(getwd(), "output/pathway-viz.cys")
+saveSession(cys.file) 
+
+#comment following line if you want to manipulate the visualization in Cytoscape
+RCy3::closeSession(save.before.closing = F)
+```
