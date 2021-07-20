@@ -6,7 +6,7 @@
 
 ----
 
-We'll work in breakout rooms with 3-4 people. 
+We'll work in breakout rooms with 3-4 people. Go through the workflow, try to write the missing code when needed, work together and discuss the questions. 
 
 *How to get started:*
 - Go to https://bigcat-covid19.github.io/ISMB2021-workshop/practical/workflow1/workflow1.nb.html
