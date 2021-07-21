@@ -10,6 +10,6 @@ We'll work in breakout rooms with 3-4 people. Go through the workflow, try to wr
 
 *How to get started:*
 - Go to [workflow1.nb.html](https://bigcat-covid19.github.io/ISMB2021-workshop/practical/workflows/workflow1.nb.html)
-- In the top left, select "Code" > "Download Rmd" file
+- In the top left, select "Code" > "Download Rmd" file and open the file in RStudio.
 - Download and unzip [data.zip](https://github.com/BIGCAT-COVID19/ISMB2021-workshop/raw/main/practical/workflows/data.zip) file in the same folder as the Rmd file.
 
