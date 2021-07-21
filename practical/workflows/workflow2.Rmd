@@ -1,0 +1,139 @@
+---
+title: "ISMB2021 Tutorial 8 - Workflow 2"
+output: html_notebook
+author: "Martina Summer-Kutmon"
+date: "20 July 2021"
+version: 1.0
+comment: "adapted from Alexander Pico's Pathway Analysis Vignette"
+license: "MIT License"
+---
+
+# General instructions (read before running the code snippets)
+In this second workflow, we will create a protein-protein interaction network of the up- and down-regulated genes after COVID19 infection. Afterwards, we will extend the network with gene-pathway associations to see in which pathways the differentially expressed genes are present in.
+
+* The script contains xxx code snippets which should be run one after the other. 
+* Make sure all the required packages are installed beforehand (BiocManager::install(...)). 
+* Make sure you have Cytoscape installed (version 3.8.0+) and running before you start running the script. 
+
+*** 
+
+# Setup
+
+Loading libraries
+```{r}
+options(connectionObserver = NULL)
+
+library(dplyr)
+library(rWikiPathways)
+library(RCy3)
+library(RColorBrewer)
+library(rstudioapi)
+library(readr)
+```
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+```
+
+*** 
+
+## Load differential gene expression dataset
+
+Make sure you ran workflow 1 beforehand, so the differential gene expression file has been generated. 
+
+We take the series 1 from the following dataset (NHBE mock treated versus SARS-CoV-2 infected): 
+* https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE147507
+
+which is related to the following publication:
+
+Blanco-Melo, Daniel, et al. "Imbalanced host response to SARS-CoV-2 drives development of COVID-19." Cell 181.5 (2020): 1036-1045.
+
+```{r}
+data.NHBE <- read.table("data/deg-data.txt", sep = "\t", header=TRUE)
+deg <- unique(data.NHBE[!is.na(data.NHBE$pvalue) & data.NHBE$pvalue < 0.05 & abs(data.NHBE$log2FoldChange) > 0.58,c(1,2)])
+```
+
+***
+
+## PPI network analysis
+
+Next, we will create a protein-protein interaction network with all differentially expressed genes using the STRING database. 
+
+```{r}
+RCy3::cytoscapePing()
+installApp('stringApp') 
+
+query <- format_csv(as.data.frame(deg$GeneId), col_names=F, quote_escape = "double", eol =",")
+commandsRun(paste0('string protein query cutoff=0.9 newNetName="PPI network" query="',query,'" limit=0'))
+
+# network will be opened in Cytoscape (this might take a while)
+```
+
+> Let's explore the network
+
+- **Q1**: How many of the differentially expressed genes were found in STRING?
+- **Q2**: Are all genes connected in the network? 
+- **Q3**: Change the confidence cutoff in the commandsRun call from 0.9 (high confidence) to 0.4 (medium confidence). What changes? 
+
+***
+
+## Data visualization
+
+Use the same visualization you created in workflow 1 to visualize the gene expression data on the network.
+
+```{r}
+loadTableData(data.NHBE, data.key.column = "GeneId", table.key.column = "query term")
+
+# apply visual style with ?setNodeColorMapping
+# create a gradient visualization for column: log2FoldChange
+# Important add: style.name="STRING style v1.5"
+# TODO!
+
+setNodeColorMapping(...?...)
+```
+
+> Interpretation
+
+- **Q4**: Do you see clusters of up- or down-regulated genes in the PPI network?
+
+***
+
+## Pathway information
+
+Next, we will add information about participation of the differentially expressed genes in COVID19 specific pathways (Disease Map and COVID19 portal on WikiPathways).
+
+```{r}
+RCy3::cytoscapePing()
+installApp('CyTargetLinker') 
+
+pathways <- file.path(getwd(), "data/covid-pathways.xgmml")
+
+# run CyTargetLinker
+commandsRun(paste0('cytargetlinker extend idAttribute="query term" linkSetFiles="', pathways, '"'))
+commandsRun('cytargetlinker applyLayout network="current"')
+commandsRun('cytargetlinker applyVisualstyle network="current"')
+RCy3::setNodeLabelMapping("display name", style.name="CyTargetLinker")
+
+# TODO: adapt the visual style to also show the differential gene expression as the node fill color
+
+```
+
+> Interpretation
+
+- **Q5**: How many differentially expressed genes are in at least one of the COVID pathways? 
+- **Q6**: Are the genes also functionally related based on the PPI network?
+
+***
+
+## Save Cytoscape output and session
+
+```{r}
+# Saving output
+png.file <- file.path(getwd(), "ppi-network.png")
+exportImage(png.file,'PNG', zoom = 500)
+cys.file <- file.path(getwd(), "ppi-network.cys")
+saveSession(cys.file) 
+
+#comment following line if you want to manipulate the visualization in Cytoscape
+RCy3::closeSession(save.before.closing = F)
+```
