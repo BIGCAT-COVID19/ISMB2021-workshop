@@ -21,11 +21,11 @@
 | Date | Time | Title | Presenter | Link |
 |:----:|------|-------|------|------|
 | 22 July 2021 | 15:00 UTC | Tutorial opening | Lauren Dupuis | Slides |
-|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | [Slides](https://docs.google.com/presentation/d/1BQ3oVJ-k1Ax8afJTQewArIHfBFilPvXal_P198BuTs8) |
-|  | 15:45 UTC | Introduction Cytoscape  | Scooter Morris | [Slides](https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html) |
-|  | 16:45 UTC | Hands-on Cytsocape 1 | Scooter Morris | [Practical](https://cytoscape.org/cytoscape-tutorials/protocols/rna-seq-data-analysis/#/) |
+|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | <a href="https://docs.google.com/presentation/d/1BQ3oVJ-k1Ax8afJTQewArIHfBFilPvXal_P198BuTs8" target="_blank">Slides</a> |
+|  | 15:45 UTC | Introduction Cytoscape  | Scooter Morris | <a href="https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html" target="_blank">Slides</a> |
+|  | 16:45 UTC | Hands-on Cytsocape 1 | Scooter Morris | <a href="https://cytoscape.org/cytoscape-tutorials/protocols/rna-seq-data-analysis/#/" target="_blank">Practical</a> |
 |  | 17:30 UTC | Break | |  |
-|  | 17:45 UTC | Introduction to Cytoscape: Automation | Scooter Morris | [Slides](https://cytoscape.org/cytoscape-tutorials/presentations/intro-automation-2021-ismb.html), [Practical](https://cytoscape.org/cytoscape-tutorials/presentations/modules/RCy3_OmicsUseCase2/) |
+|  | 17:45 UTC | Introduction to Cytoscape: Automation | Scooter Morris | <a href="https://cytoscape.org/cytoscape-tutorials/presentations/intro-automation-2021-ismb.html" target="_blank">Slides</a>, <a href="https://cytoscape.org/cytoscape-tutorials/presentations/modules/RCy3_OmicsUseCase2/" target="_blank">Practical</a> |
 |  | 18:30 UTC | Wrap up day 1 | Lauren Dupuis | [Slides](presentations/Wrap-up.pdf) |
 | | | | | |
 | 23 July 2021 | 15:00 UTC | Introduction workflows | Martina Kutmon | Slides |
