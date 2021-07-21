@@ -23,27 +23,21 @@ Loading libraries
 ```{r}
 options(connectionObserver = NULL)
 
-library(readr)
 library(DESeq2)
 library(here)
 library(dplyr)
-library(tibble)
 library(clusterProfiler)
 library(org.Hs.eg.db)
-library(tidyverse)
 library(rWikiPathways)
 library(RCy3)
 library(RColorBrewer)
 library(EnhancedVolcano)
-library(readr)
-library(reshape)
 library(data.table)
-library(svglite)
+library(rstudioapi)
 ```
 
 ```{r}
-path <- here()
-setwd(path)
+setwd(dirname(getActiveDocumentContext()$path))
 ```
 
 *** 
@@ -114,6 +108,8 @@ rm(hgcn2entrez,dds,data.res)
 data.NHBE <- data.mapped %>% tidyr::drop_na(ENTREZID)
 colnames(data.NHBE)[2] <- "GeneName"
 colnames(data.NHBE)[1] <- "GeneId"
+
+write.table(data.NHBE, file="data/deg-data.txt", quote=FALSE, sep="\t", row.names = FALSE, col.names=TRUE)
 ```
 
 
@@ -184,7 +180,7 @@ ewp.res <- as.data.frame(ewp)
 
 > Interpretation
 
-- **Q7**: Why did you select the cutoffs for the differentially expressed genes (deg)?
+- **Q7**: Which cutoff for deg did you choose and why?
 - **Q8**: How many of the measured and differentially expressed genes are actually present in at least one of the pathway models - actual background list? Hint: information is available in the ewp object.
 #length(ewp@universe)
 #length(deg$GeneId[deg$GeneId %in% unique(wp2gene$gene)])
