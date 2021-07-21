@@ -24,6 +24,7 @@ BiocManager::install("EnhancedVolcano")
 BiocManager::install("dplyr") 
 BiocManager::install("tidyverse") 
 BiocManager::install("clusterProfiler") 
+BiocManager::install("DESeq2") 
 ```
 
 <hr/>
