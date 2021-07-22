@@ -21,7 +21,7 @@
 | Date | Time | Title | Presenter | Link |
 |:----:|------|-------|------|------|
 | 22 July 2021 | 15:00 UTC | Tutorial opening | Lauren Dupuis | [Slides](presentations/Intro_LD.pdf) |
-|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | <a href="https://docs.google.com/presentation/d/1BQ3oVJ-k1Ax8afJTQewArIHfBFilPvXal_P198BuTs8" target="_blank">Slides</a> |
+|  | 15:15 UTC | Introduction COVID19 Disease Map / WikiPathways | Martina Kutmon | <a href="https://drive.google.com/file/d/12530vGK5MrMEuHKU2RqeBtq8ZCTWw1fg/view?usp=sharing" target="_blank">Slides</a> |
 |  | 15:45 UTC | Introduction Cytoscape  | Scooter Morris | <a href="https://cytoscape.org/cytoscape-tutorials/presentations/intro-cytoscape-2021-ismb.html" target="_blank">Slides</a> |
 |  | 16:45 UTC | Hands-on Cytsocape 1 | Scooter Morris | <a href="https://cytoscape.org/cytoscape-tutorials/protocols/rna-seq-data-analysis/#/" target="_blank">Practical</a> |
 |  | 17:30 UTC | Break | |  |
