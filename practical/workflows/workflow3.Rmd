@@ -152,7 +152,7 @@ RCy3::setVisualStyle("my_style_kidney_noncovid")
 RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
 RCy3::commandsRun('cyanimator list frames network=\"current\"') 
 
-
+# TODO: UPDATE OUTPUT DIR!
 RCy3::commandsRun('cyanimator record outputDir=\"C:/Users/martina.kutmon/Downloads/test/"') 
 
 ```
