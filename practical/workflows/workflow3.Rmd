@@ -124,32 +124,32 @@ RCy3::loadTableData(data, data.key.column = "Gene.name", table.key.column = "HGN
 RCy3::copyVisualStyle("my_style", "my_style_lung_covid")
 RCy3::setNodeColorMapping(table.column = "lung_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_lung_covid")
 RCy3::setVisualStyle("my_style_lung_covid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 
 RCy3::copyVisualStyle("my_style", "my_style_lung_noncovid")
 RCy3::setNodeColorMapping(table.column = "lung_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_lung_noncovid")
 RCy3::setVisualStyle("my_style_lung_noncovid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 
 RCy3::copyVisualStyle("my_style", "my_style_liver_covid")
 RCy3::setNodeColorMapping(table.column = "liver_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_liver_covid")
 RCy3::setVisualStyle("my_style_liver_covid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 
 RCy3::copyVisualStyle("my_style", "my_style_liver_noncovid")
 RCy3::setNodeColorMapping(table.column = "liver_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_liver_noncovid")
 RCy3::setVisualStyle("my_style_liver_noncovid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 
 RCy3::copyVisualStyle("my_style", "my_style_kidney_covid")
 RCy3::setNodeColorMapping(table.column = "kidney_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_kidney_covid")
 RCy3::setVisualStyle("my_style_kidney_covid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 
 RCy3::copyVisualStyle("my_style", "my_style_kidney_noncovid")
 RCy3::setNodeColorMapping(table.column = "kidney_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_kidney_noncovid")
 RCy3::setVisualStyle("my_style_kidney_noncovid")
-RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator capture frame interpolate=60 network=\"current\"') 
 RCy3::commandsRun('cyanimator list frames network=\"current\"') 
 
 # TODO: UPDATE OUTPUT DIR!
