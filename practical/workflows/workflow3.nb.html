@@ -1848,13 +1848,15 @@ RCy3::analyzeNetwork(directed=TRUE)</code></pre>
 <p>Next, I want you to think about the network visualization. How do you want to visualize the different node types? Size, shape? What layout works best? Are there any network properties that you want to show in the visualization (degree, betweenness)? The only requirement - do not use the fill color! We will use that for data visualization later.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6c2V0Tm9kZUNvbG9yRGVmYXVsdChcImxpZ2h0LWJsdWVcIiwgc3R5bGUubmFtZSA9IFwibXlfc3R5bGVcIilcblxuYGBgIn0= -->
-<pre class="r"><code>RCy3::setNodeColorDefault(&quot;light-blue&quot;, style.name = &quot;my_style&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPOiBjb21lIHVwIHdpdGggeW91IG93biB2aXN1YWxpemF0aW9uXG5SQ3kzOjpjcmVhdGVWaXN1YWxTdHlsZShcIm15X3N0eWxlXCIpXG5cbiMgLi4uIFRPRE86IEFERCBWSVNVQUxJWkFUSU9OIE9QVElPTlMgLi4uXG5cblJDeTM6OnNldFZpc3VhbFN0eWxlKFwibXlfc3R5bGVcIilcblxuYGBgIn0= -->
+<pre class="r"><code># TODO: come up with you own visualization
+RCy3::createVisualStyle(&quot;my_style&quot;)
+
+# ... TODO: ADD VISUALIZATION OPTIONS ...
+
+RCy3::setVisualStyle(&quot;my_style&quot;)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IGxpZ2h0LWJsdWUgaXMgbm90IGEgdmFsaWQgaGV4YWRlY2ltYWwgY29sb3IsIGUuZy4gI0ZEMzlCOC5cbiJ9 -->
-<pre><code>Error: light-blue is not a valid hexadecimal color, e.g. #FD39B8.</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <blockquote>
