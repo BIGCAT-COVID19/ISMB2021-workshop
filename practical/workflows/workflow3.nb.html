@@ -1794,13 +1794,44 @@ library(clusterProfiler)</code></pre>
 <p>We will integrate the COVID19 Disease Map and WikiPathways COVID pathways in a pathway-gene network.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6bG9hZFRhYmxlRGF0YSh0YWJsZVssYygxLDQpXSwgZGF0YS5rZXkuY29sdW1uID0gXCJpZFwiLCB0YWJsZS5rZXkuY29sdW1uID0gXCJpZFwiKVxuXG5gYGAifQ== -->
-<pre class="r"><code>RCy3::loadTableData(table[,c(1,4)], data.key.column = &quot;id&quot;, table.key.column = &quot;id&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6Y3l0b3NjYXBlUGluZygpXG5cbiMgY29tYmluZSBXaWtpUGF0aHdheXMgYW5kIENPVklEMTkgRGlzZWFzZSBNYXAgZ2VuZSBzZXRzXG53cDJnZW5lIDwtIHJlYWRQYXRod2F5R01UKFwiZGF0YS93aWtpcGF0aHdheXMtMjAyMTA3MTAtZ210LUhvbW9fc2FwaWVucy5nbXRcIilcbnB3eS5jb3ZpZCA8LSByV2lraVBhdGh3YXlzOjpnZXRQYXRod2F5SWRzQnlDdXJhdGlvblRhZyhcIkN1cmF0aW9uOkNPVklEMTlcIilcbndwMmdlbmUuZmlsdCA8LSB3cDJnZW5lWyB3cDJnZW5lJHdwaWQgJWluJSBwd3kuY292aWQsXVxuXG5kbTJnZW5lIDwtIHJlYWRQYXRod2F5R01UKFwiZGF0YS9DT1ZJRDE5X0Rpc2Vhc2VNYXBfSnVuZTIwMjEuZ210XCIpXG5wd3kyZ2VuZSA8LSBkcGx5cjo6YmluZF9yb3dzKHdwMmdlbmUuZmlsdCwgZG0yZ2VuZSlcbiMgZWRnZSBsaXN0IHBhdGh3YXkgPiBnZW5lXG5lZGdlcyA8LSBwd3kyZ2VuZVssYygzLDUpXVxuY29sbmFtZXMoZWRnZXMpIDwtIGMoXCJzb3VyY2VcIixcInRhcmdldFwiKVxuXG5wd3lzIDwtIHVuaXF1ZShwd3kyZ2VuZVssYygzLDEpXSlcbmNvbG5hbWVzKHB3eXMpIDwtIGMoXCJpZFwiLCBcIm5hbWVcIilcbnB3eXMkdHlwZSA8LSBcInBhdGh3YXlcIlxuXG5nZW5lcyA8LSBhcy5kYXRhLmZyYW1lKHVuaXF1ZShwd3kyZ2VuZVssYyg1KV0pKVxuY29sbmFtZXMoZ2VuZXMpIDwtIGMoXCJpZFwiKVxuZ2VuZXMkdHlwZSA8LSBcImdlbmVcIlxuXG5ub2RlcyA8LSBkcGx5cjo6YmluZF9yb3dzKGdlbmVzLHB3eXMpXG5cblJDeTM6OmNyZWF0ZU5ldHdvcmtGcm9tRGF0YUZyYW1lcyhub2RlcyA9IG5vZGVzLCBlZGdlcz11bmlxdWUoZWRnZXMpLCB0aXRsZT1cIm92ZXJsYXAgbmV0d29ya1wiKVxuXG4jIGluIHRoZSBmb2xsb3dpbmcgbGluZXMsIHlvdSB3aWxsIHNlZSBob3cgeW91IGNhbiBnZXQgdGhlIGdlbmUgbmFtZXMgZm9yIHRoZSBFbnRyZXogR2VuZSBpZGVudGlmaWVycyBhbmQgYWRkIHRoZW0gdG8gdGhlIG5vZGUgdGFibGUgYXMgYSBsYWJlbFxuIyBtYXAgRW50cmV6IEdlbmUgdG8gSEdOQyBHZW5lIHN5bWJvbHNcblJDeTM6Om1hcFRhYmxlQ29sdW1uKFwiaWRcIixcIkh1bWFuXCIsIFwiRW50cmV6IEdlbmVcIixcIkhHTkNcIilcblxudGFibGUgPC0gUkN5Mzo6Z2V0VGFibGVDb2x1bW5zKGNvbHVtbnMgPSBjKFwiaWRcIixcIm5hbWVcIixcIkhHTkNcIikpXG50YWJsZSRsYWJlbCA8LSBpZmVsc2UoaXMubmEodGFibGUkbmFtZSksIHRhYmxlJEhHTkMsIHRhYmxlJG5hbWUpXG50YWJsZSRsYWJlbCA8LSBpZmVsc2UoaXMubmEodGFibGUkbGFiZWwpLCB0YWJsZSRpZCwgdGFibGUkbGFiZWwpXG5cblJDeTM6OmxvYWRUYWJsZURhdGEodGFibGVbLGMoMSw0KV0sIGRhdGEua2V5LmNvbHVtbiA9IFwiaWRcIiwgdGFibGUua2V5LmNvbHVtbiA9IFwiaWRcIilcblxuUkN5Mzo6YW5hbHl6ZU5ldHdvcmsoZGlyZWN0ZWQ9VFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>RCy3::cytoscapePing()
+
+# combine WikiPathways and COVID19 Disease Map gene sets
+wp2gene &lt;- readPathwayGMT(&quot;data/wikipathways-20210710-gmt-Homo_sapiens.gmt&quot;)
+pwy.covid &lt;- rWikiPathways::getPathwayIdsByCurationTag(&quot;Curation:COVID19&quot;)
+wp2gene.filt &lt;- wp2gene[ wp2gene$wpid %in% pwy.covid,]
+
+dm2gene &lt;- readPathwayGMT(&quot;data/COVID19_DiseaseMap_June2021.gmt&quot;)
+pwy2gene &lt;- dplyr::bind_rows(wp2gene.filt, dm2gene)
+# edge list pathway &gt; gene
+edges &lt;- pwy2gene[,c(3,5)]
+colnames(edges) &lt;- c(&quot;source&quot;,&quot;target&quot;)
+
+pwys &lt;- unique(pwy2gene[,c(3,1)])
+colnames(pwys) &lt;- c(&quot;id&quot;, &quot;name&quot;)
+pwys$type &lt;- &quot;pathway&quot;
+
+genes &lt;- as.data.frame(unique(pwy2gene[,c(5)]))
+colnames(genes) &lt;- c(&quot;id&quot;)
+genes$type &lt;- &quot;gene&quot;
+
+nodes &lt;- dplyr::bind_rows(genes,pwys)
+
+RCy3::createNetworkFromDataFrames(nodes = nodes, edges=unique(edges), title=&quot;overlap network&quot;)
+
+# in the following lines, you will see how you can get the gene names for the Entrez Gene identifiers and add them to the node table as a label
+# map Entrez Gene to HGNC Gene symbols
+RCy3::mapTableColumn(&quot;id&quot;,&quot;Human&quot;, &quot;Entrez Gene&quot;,&quot;HGNC&quot;)
+
+table &lt;- RCy3::getTableColumns(columns = c(&quot;id&quot;,&quot;name&quot;,&quot;HGNC&quot;))
+table$label &lt;- ifelse(is.na(table$name), table$HGNC, table$name)
+table$label &lt;- ifelse(is.na(table$label), table$id, table$label)
+
+RCy3::loadTableData(table[,c(1,4)], data.key.column = &quot;id&quot;, table.key.column = &quot;id&quot;)
+
+RCy3::analyzeNetwork(directed=TRUE)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU3VjY2VzczogRGF0YSBsb2FkZWQgaW4gZGVmYXVsdG5vZGUgdGFibGVcIlxuIn0= -->
-<pre><code>[1] &quot;Success: Data loaded in defaultnode table&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <blockquote>
@@ -1897,23 +1928,17 @@ RCy3::commandsRun(&#39;cyanimator record outputDir=\&quot;C:/Users/martina.kutmo
 <p>We can also visualize and compare the tissue expression in a different way in one visualization.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6aW5zdGFsbEFwcChcImVuaGFuY2VkR3JhcGhpY3NcIilcbmBgYCJ9 -->
-<pre class="r"><code>RCy3::installApp(&quot;enhancedGraphics&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiQXBwIGVuaGFuY2VkR3JhcGhpY3MgaW5zdGFsbGVkXG4ifQ== -->
-<pre><code>App enhancedGraphics installed</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6Y29weVZpc3VhbFN0eWxlKFwibXlfc3R5bGVcIiwgXCJteV9zdHlsZV9oZWF0bWFwXCIpXG5cblJDeTM6OnNldE5vZGVDdXN0b21IZWF0TWFwQ2hhcnQoYyhcImx1bmdfQzFcIixcImx1bmdfTkMxXCIsXCJsaXZlcl9DMVwiLFwibGl2ZXJfTkMxXCIsXCJraWRuZXlfQzFcIixcImtpZG5leV9OQzFcIiksIHNsb3QgPSAyLCBzdHlsZS5uYW1lID0gXCJteV9zdHlsZV9oZWF0bWFwXCIpXG5cblJDeTM6OnNldFZpc3VhbFN0eWxlKFwibXlfc3R5bGVfaGVhdG1hcFwiKVxuYGBgIn0= -->
-<pre class="r"><code>RCy3::copyVisualStyle(&quot;my_style&quot;, &quot;my_style_heatmap&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6aW5zdGFsbEFwcChcImVuaGFuY2VkR3JhcGhpY3NcIilcblJDeTM6OmNvcHlWaXN1YWxTdHlsZShcIm15X3N0eWxlXCIsIFwibXlfc3R5bGVfaGVhdG1hcFwiKVxuXG5SQ3kzOjpzZXROb2RlQ3VzdG9tSGVhdE1hcENoYXJ0KGMoXCJsdW5nX0MxXCIsXCJsdW5nX05DMVwiLFwibGl2ZXJfQzFcIixcImxpdmVyX05DMVwiLFwia2lkbmV5X0MxXCIsXCJraWRuZXlfTkMxXCIpLCBzbG90ID0gMiwgc3R5bGUubmFtZSA9IFwibXlfc3R5bGVfaGVhdG1hcFwiKVxuXG4jIC4uLiBUT0RPOiBhZGQgb3RoZXIgdmlzdWFsaXphdGlvbiBvcHRpb25zIHRvIG1ha2UgaXQgcHJldHRpZXIgLi4uXG5cblJDeTM6OnNldFZpc3VhbFN0eWxlKFwibXlfc3R5bGVfaGVhdG1hcFwiKVxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>RCy3::installApp(&quot;enhancedGraphics&quot;)
+RCy3::copyVisualStyle(&quot;my_style&quot;, &quot;my_style_heatmap&quot;)
 
 RCy3::setNodeCustomHeatMapChart(c(&quot;lung_C1&quot;,&quot;lung_NC1&quot;,&quot;liver_C1&quot;,&quot;liver_NC1&quot;,&quot;kidney_C1&quot;,&quot;kidney_NC1&quot;), slot = 2, style.name = &quot;my_style_heatmap&quot;)
 
-RCy3::setVisualStyle(&quot;my_style_heatmap&quot;)</code></pre>
+# ... TODO: add other visualization options to make it prettier ...
+
+RCy3::setVisualStyle(&quot;my_style_heatmap&quot;)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgIG1lc3NhZ2UgXG5cIlZpc3VhbCBTdHlsZSBhcHBsaWVkLlwiIFxuIn0= -->
-<pre><code>                message 
-&quot;Visual Style applied.&quot; </code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
