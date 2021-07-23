@@ -126,8 +126,6 @@ Let's use a volcano plot to visualize the result of the differential gene expres
 
 ```{r fig1, fig.width=8, fig.height=6}
 EnhancedVolcano(data.res.df, title = "NHBE cell line", lab = data.res.df$GeneID, x = 'log2FoldChange', y = 'pvalue', pCutoff = 0.05, FCcutoff = 0.585, labSize = 3)
-
-write.table(data.NHBE, file="DEG_Data.txt", sep="\t", quote=FALSE, row.names = FALSE)
 ```
 
 > Interpretation
@@ -199,7 +197,7 @@ ggplot(ewp[1:dim(ewp.res)[1]], aes(x=reorder(Description, -pvalue), y=Count)) +
   theme(axis.text=element_text(size=10)) + 
   theme(legend.position="none")
 
-write.table(ewp.res, file="enrich_res.txt", sep="\t", quote=FALSE, row.names = FALSE)
+write.table(ewp.res, file="data/enrich_res.txt", sep="\t", quote=FALSE, row.names = FALSE)
 ```
 
 > Interpretation
