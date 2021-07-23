@@ -30,11 +30,11 @@
 | | | | | |
 | 23 July 2021 | 15:00 UTC | Introduction workflows | Martina Kutmon | [Slides](presentations/Workflows.pdf) |
 |  | 15:15 UTC | Workflow 1 | Martina Kutmon | [Practical](practical/workflow1.md) |
-|  | 16:00 UTC | Workflow 2 | Martina Kutmon | [Practical](practical/workflow2.md) |
-|  | 16:45 UTC | Break | |  |
-|  | 17:00 UTC | Workflow 3 | Martina Kutmon | [Practical](practical/workflow3.md) |
-|  | 17:45 UTC | Wrap up day 2 | Lauren Dupuis | [Slides](presentations/Wrap-up_Day2.pdf) |
-|  | 18:15 UTC | Q&A | all | |
+|  | 16:15 UTC | Workflow 2 | Martina Kutmon | [Practical](practical/workflow2.md) |
+|  | 17:00 UTC | Break | |  |
+|  | 17:15 UTC | Workflow 3 | Martina Kutmon | [Practical](practical/workflow3.md) |
+|  | 18:15 UTC | Wrap up day 2 | Lauren Dupuis | [Slides](presentations/Wrap-up_Day2.pdf) |
+|  | 18:25 UTC | Q&A | all | |
 
 <hr/>
 
