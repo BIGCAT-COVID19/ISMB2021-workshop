@@ -241,6 +241,44 @@ RCy3::setVisualStyle("WikiPathways")
 
 *Note*: If you want to visualize the data on the pathways from the Disease Map, you need to export the pathway model as an SBML file and import it in Cytoscape using the cySBML app. Alternatively, you can request an account for MINERVA and upload your own dataset and create an overlay on the map (https://covid19map.elixir-luxembourg.org/minerva/index.xhtml?id=covid19_map_17Jun21 > OVERLAYS). 
 
+
+*** 
+
+## Drug target information
+
+Next, we will add information about known drug-target interactions of the pathway of interest. We will import the pathway as a network and then extend it with drug-target information from DrugBank using the CyTargetLinker app.
+
+```{r}
+RCy3::cytoscapePing()
+installApp('CyTargetLinker') 
+installApp('WikiPathways')
+
+RCy3::commandsRun('wikipathways import-as-network id=WP4868') 
+toggleGraphicsDetails()
+
+drugs <- file.path(getwd(), "data/drugbank-5.1.0.xgmml")
+
+# run CyTargetLinker
+commandsRun(paste0('cytargetlinker extend idAttribute="Ensembl" linkSetFiles="', drugs, '"'))
+commandsRun('cytargetlinker applyLayout network="current"')
+RCy3::setVisualStyle("WikiPathways-As-Network")
+
+#let's change the visualization of the drugs in the network using the ByPass option
+selected <- RCy3::selectNodes(nodes="drug", by.col = "CTL.Type")
+RCy3::setNodeShapeBypass(node.names = selected$nodes, new.shapes = "Triangle")
+RCy3::setNodeBorderColorBypass(node.names = selected$nodes, "#9900FF")
+RCy3::setNodeBorderWidthBypass(node.names = selected$nodes, new.sizes = 5)
+RCy3::clearSelection()
+
+# TODO: VISUAL STYLE
+# adapt the visual style to also show the differential gene expression as the node fill color
+
+```
+
+> Interpretation
+
+- **Q12**: Are there proteins targeted by many known drugs? Can you find supporting literature regarding these genes or drugs in the context of COVID19? 
+
 ***
 
 ## Save Cytoscape output and session

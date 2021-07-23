@@ -1769,40 +1769,44 @@ pre code {
 <p>Loading libraries</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3B0aW9ucyhjb25uZWN0aW9uT2JzZXJ2ZXIgPSBOVUxMKVxuXG5saWJyYXJ5KERFU2VxMilcbmxpYnJhcnkoaGVyZSlcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGNsdXN0ZXJQcm9maWxlcilcbmxpYnJhcnkob3JnLkhzLmVnLmRiKVxubGlicmFyeShyV2lraVBhdGh3YXlzKVxubGlicmFyeShSQ3kzKVxubGlicmFyeShSQ29sb3JCcmV3ZXIpXG5saWJyYXJ5KEVuaGFuY2VkVm9sY2FubylcbmxpYnJhcnkoZGF0YS50YWJsZSlcbmxpYnJhcnkocnN0dWRpb2FwaSlcbmBgYCJ9 -->
-<pre class="r"><code>options(connectionObserver = NULL)
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2V0d2QoZGlybmFtZShnZXRBY3RpdmVEb2N1bWVudENvbnRleHQoKSRwYXRoKSlcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
+setwd(dirname(getActiveDocumentContext()$path))</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
 
-library(DESeq2)
-library(here)
-library(dplyr)
-library(clusterProfiler)
-library(org.Hs.eg.db)
-library(rWikiPathways)
-library(RCy3)
-library(RColorBrewer)
-library(EnhancedVolcano)
-library(data.table)
-library(rstudioapi)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoZGlybmFtZShnZXRBY3RpdmVEb2N1bWVudENvbnRleHQoKSRwYXRoKSlcbmBgYCJ9 -->
-<pre class="r"><code>setwd(dirname(getActiveDocumentContext()$path))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<div id="load-dataset" class="section level2">
-<h2>Load dataset</h2>
-<p>We take the series 1 from the following dataset (NHBE mock treated versus SARS-CoV-2 infected): * <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE147507" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE147507</a></p>
-<p>which is related to the following publication:</p>
-<p>Blanco-Melo, Daniel, et al. “Imbalanced host response to SARS-CoV-2 drives development of COVID-19.” Cell 181.5 (2020): 1036-1045.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR1NFMTQ3NTA3X3Jhd19jb3VudHMgPC0gcmVhZC5jc3YoXCJkYXRhL0dTRTE0NzUwN19SYXdSZWFkQ291bnRzX0h1bWFuLnRzdlwiLCBzZXAgPSBcIlxcdFwiKVxuIyBmaWx0ZXIgTkhCRSBzYW1wbGVzXG5kYXRhIDwtIEdTRTE0NzUwN19yYXdfY291bnRzWyxjKDI6NyldXG5yb3cubmFtZXMoZGF0YSkgPC0gR1NFMTQ3NTA3X3Jhd19jb3VudHMkWFxucm0oR1NFMTQ3NTA3X3Jhd19jb3VudHMpXG5cbiMgZm9ybWF0dGluZyB0aGUgZGF0YSB0YWJsZVxuZGF0YS5jb2wgPC0gYXMuZGF0YS5mcmFtZShtYXRyaXgoTkEsbGVuZ3RoKG5hbWVzKGRhdGEpKSwxKSlcbm5hbWVzKGRhdGEuY29sKSA8LSBjKFwiY29uZGl0aW9uXCIpXG5yb3cubmFtZXMoZGF0YS5jb2wpIDwtIG5hbWVzKGRhdGEpXG5kYXRhLmNvbCRjb25kaXRpb24gPC0gZ3N1YihcIlNlcmllczFfXCIsIFwiXCIsIHJvdy5uYW1lcyhkYXRhLmNvbCkpXG5kYXRhLmNvbCRjb25kaXRpb24gPC0gZmFjdG9yKGdzdWIoXCJfWzEtM10kXCIsIFwiXCIsIGRhdGEuY29sJGNvbmRpdGlvbikpXG5cbmhlYWQoZGF0YS5jb2wpXG5oZWFkKGRhdGEpXG5gYGAifQ== -->
-<pre class="r"><code>GSE147507_raw_counts &lt;- read.csv(&quot;data/GSE147507_RawReadCounts_Human.tsv&quot;, sep = &quot;\t&quot;)
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+*** 
+
+## Load dataset
+
+We take the series 1 from the following dataset (NHBE mock treated versus SARS-CoV-2 infected): 
+* https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE147507
+
+which is related to the following publication:
+
+Blanco-Melo, Daniel, et al. &quot;Imbalanced host response to SARS-CoV-2 drives development of COVID-19.&quot; Cell 181.5 (2020): 1036-1045.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR1NFMTQ3NTA3X3Jhd19jb3VudHMgPC0gcmVhZC5jc3YoXCJkYXRhL0dTRTE0NzUwN19SYXdSZWFkQ291bnRzX0h1bWFuLnRzdlwiLCBzZXAgPSBcIlxcdFwiKVxuIyBmaWx0ZXIgTkhCRSBzYW1wbGVzXG5kYXRhIDwtIEdTRTE0NzUwN19yYXdfY291bnRzWyxjKDI6NyldXG5yb3cubmFtZXMoZGF0YSkgPC0gR1NFMTQ3NTA3X3Jhd19jb3VudHMkWFxucm0oR1NFMTQ3NTA3X3Jhd19jb3VudHMpXG5cbiMgZm9ybWF0dGluZyB0aGUgZGF0YSB0YWJsZVxuZGF0YS5jb2wgPC0gYXMuZGF0YS5mcmFtZShtYXRyaXgoTkEsbGVuZ3RoKG5hbWVzKGRhdGEpKSwxKSlcbm5hbWVzKGRhdGEuY29sKSA8LSBjKFwiY29uZGl0aW9uXCIpXG5yb3cubmFtZXMoZGF0YS5jb2wpIDwtIG5hbWVzKGRhdGEpXG5kYXRhLmNvbCRjb25kaXRpb24gPC0gZ3N1YihcIlNlcmllczFfXCIsIFwiXCIsIHJvdy5uYW1lcyhkYXRhLmNvbCkpXG5kYXRhLmNvbCRjb25kaXRpb24gPC0gZmFjdG9yKGdzdWIoXCJfWzEtM10kXCIsIFwiXCIsIGRhdGEuY29sJGNvbmRpdGlvbikpXG5cbmhlYWQoZGF0YS5jb2wpXG5oZWFkKGRhdGEpXG5gYGAifQ== --&gt;
+
+```r
+GSE147507_raw_counts &lt;- read.csv(&quot;data/GSE147507_RawReadCounts_Human.tsv&quot;, sep = &quot;\t&quot;)
 # filter NHBE samples
 data &lt;- GSE147507_raw_counts[,c(2:7)]
 row.names(data) &lt;- GSE147507_raw_counts$X
@@ -1827,7 +1831,6 @@ head(data)</code></pre>
 <li><strong>Q1</strong>: How many samples are in the dataset?</li>
 </ul>
 <hr />
-</div>
 <div id="differential-gene-expression-analysis" class="section level2">
 <h2>Differential gene expression analysis</h2>
 <p>Next, we will run the differential gene expression analysis using the R-package DESeq2.</p>
@@ -1881,53 +1884,80 @@ write.table(data.NHBE, file=&quot;data/deg-data.txt&quot;, quote=FALSE, sep=&quo
 <p>Let’s use a volcano plot to visualize the result of the differential gene expression analysis result and save the data table in a file to keep a record.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRW5oYW5jZWRWb2xjYW5vKGRhdGEucmVzLmRmLCB0aXRsZSA9IFwiTkhCRSBjZWxsIGxpbmVcIiwgbGFiID0gZGF0YS5yZXMuZGYkR2VuZUlELCB4ID0gJ2xvZzJGb2xkQ2hhbmdlJywgeSA9ICdwdmFsdWUnLCBwQ3V0b2ZmID0gMC4wNSwgRkNjdXRvZmYgPSAwLjU4NSwgbGFiU2l6ZSA9IDMpXG5cbndyaXRlLnRhYmxlKGRhdGEuTkhCRSwgZmlsZT1cIkRFR19EYXRhLnR4dFwiLCBzZXA9XCJcXHRcIiwgcXVvdGU9RkFMU0UsIHJvdy5uYW1lcyA9IEZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>EnhancedVolcano(data.res.df, title = &quot;NHBE cell line&quot;, lab = data.res.df$GeneID, x = &#39;log2FoldChange&#39;, y = &#39;pvalue&#39;, pCutoff = 0.05, FCcutoff = 0.585, labSize = 3)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuRW5oYW5jZWRWb2xjYW5vKGRhdGEucmVzLmRmLCB0aXRsZSA9IFxcTkhCRSBjZWxsIGxpbmVcXCwgbGFiID0gZGF0YS5yZXMuZGYkR2VuZUlELCB4ID0gJ2xvZzJGb2xkQ2hhbmdlJywgeSA9ICdwdmFsdWUnLCBwQ3V0b2ZmID0gMC4wNSwgRkNjdXRvZmYgPSAwLjU4NSwgbGFiU2l6ZSA9IDMpXG5cbndyaXRlLnRhYmxlKGRhdGEuTkhCRSwgZmlsZT1cXERFR19EYXRhLnR4dFxcLCBzZXA9XFxcXHRcXCwgcXVvdGU9RkFMU0UsIHJvdy5uYW1lcyA9IEZBTFNFKVxuYGBgXG5gYGAifQ== -->
+<pre class="r"><code>```r
+EnhancedVolcano(data.res.df, title = \NHBE cell line\, lab = data.res.df$GeneID, x = &#39;log2FoldChange&#39;, y = &#39;pvalue&#39;, pCutoff = 0.05, FCcutoff = 0.585, labSize = 3)
 
-write.table(data.NHBE, file=&quot;DEG_Data.txt&quot;, sep=&quot;\t&quot;, quote=FALSE, row.names = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<blockquote>
-<p>Interpretation</p>
-</blockquote>
-<ul>
-<li><strong>Q4</strong>: Are there more up- or down-regulated genes? What cutoffs have been used for pvalue and log2FC (see line 132)?</li>
-<li><strong>Q5</strong>: What are the most significantly changed genes? Do a quick Pubmed search to see if they have a known link to COVID19.</li>
-</ul>
-<hr />
-</div>
-<div id="pathway-collection" class="section level2">
-<h2>Pathway collection</h2>
-<p>We want to perform pathway enrichment with the gene sets of all pathway models in WikiPathways (human only) and the COVID-19 Disease Map maps.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb21iaW5lIFdpa2lQYXRod2F5cyBhbmQgQ09WSUQxOSBEaXNlYXNlIE1hcCBnZW5lIHNldHNcbndwMmdlbmUgPC0gcmVhZFBhdGh3YXlHTVQoXCJkYXRhL3dpa2lwYXRod2F5cy0yMDIxMDcxMC1nbXQtSG9tb19zYXBpZW5zLmdtdFwiKVxuZG0yZ2VuZSA8LSByZWFkUGF0aHdheUdNVChcImRhdGEvQ09WSUQxOV9EaXNlYXNlTWFwX0p1bmUyMDIxLmdtdFwiKVxucHd5MmdlbmUgPC0gZHBseXI6OmJpbmRfcm93cyh3cDJnZW5lLCBkbTJnZW5lKVxuXG53cGlkMmdlbmUgPC0gcHd5MmdlbmUgJT4lIGRwbHlyOjpzZWxlY3Qod3BpZCxnZW5lKSAjVEVSTTJHRU5FXG53cGlkMm5hbWUgPC0gdW5pcXVlKHB3eTJnZW5lICU+JSBkcGx5cjo6c2VsZWN0KHdwaWQsbmFtZSkpICNURVJNMk5BTUVcbmBgYCJ9 -->
-<pre class="r"><code># combine WikiPathways and COVID19 Disease Map gene sets
-wp2gene &lt;- readPathwayGMT(&quot;data/wikipathways-20210710-gmt-Homo_sapiens.gmt&quot;)
-dm2gene &lt;- readPathwayGMT(&quot;data/COVID19_DiseaseMap_June2021.gmt&quot;)
+write.table(data.NHBE, file=\DEG_Data.txt\, sep=\\t\, quote=FALSE, row.names = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+&gt; Interpretation
+
+- **Q4**: Are there more up- or down-regulated genes? What cutoffs have been used for pvalue and log2FC (see line 132)?
+- **Q5**: What are the most significantly changed genes? Do a quick Pubmed search to see if they have a known link to COVID19. 
+
+***
+
+## Pathway collection
+
+We want to perform pathway enrichment with the gene sets of all pathway models in WikiPathways (human only) and the COVID-19 Disease Map maps.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBjb21iaW5lIFdpa2lQYXRod2F5cyBhbmQgQ09WSUQxOSBEaXNlYXNlIE1hcCBnZW5lIHNldHNcbndwMmdlbmUgPC0gcmVhZFBhdGh3YXlHTVQoXFxkYXRhL3dpa2lwYXRod2F5cy0yMDIxMDcxMC1nbXQtSG9tb19zYXBpZW5zLmdtdFxcKVxuZG0yZ2VuZSA8LSByZWFkUGF0aHdheUdNVChcXGRhdGEvQ09WSUQxOV9EaXNlYXNlTWFwX0p1bmUyMDIxLmdtdFxcKVxucHd5MmdlbmUgPC0gZHBseXI6OmJpbmRfcm93cyh3cDJnZW5lLCBkbTJnZW5lKVxuXG53cGlkMmdlbmUgPC0gcHd5MmdlbmUgJT4lIGRwbHlyOjpzZWxlY3Qod3BpZCxnZW5lKSAjVEVSTTJHRU5FXG53cGlkMm5hbWUgPC0gdW5pcXVlKHB3eTJnZW5lICU+JSBkcGx5cjo6c2VsZWN0KHdwaWQsbmFtZSkpICNURVJNMk5BTUVcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+# combine WikiPathways and COVID19 Disease Map gene sets
+wp2gene &lt;- readPathwayGMT(\data/wikipathways-20210710-gmt-Homo_sapiens.gmt\)
+dm2gene &lt;- readPathwayGMT(\data/COVID19_DiseaseMap_June2021.gmt\)
 pwy2gene &lt;- dplyr::bind_rows(wp2gene, dm2gene)
 
 wpid2gene &lt;- pwy2gene %&gt;% dplyr::select(wpid,gene) #TERM2GENE
 wpid2name &lt;- unique(pwy2gene %&gt;% dplyr::select(wpid,name)) #TERM2NAME</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<blockquote>
-<p>Interpretation</p>
-</blockquote>
-<ul>
-<li><strong>Q6</strong>: The WikiPathways human collection and the Disease Map have been combined. How many pathways are in the collection? (wpid2name)</li>
-</ul>
-<hr />
-</div>
-<div id="pathway-enrichment" class="section level2">
-<h2>Pathway enrichment</h2>
-<p>The clusterProfiler R-package is used to perform overrepresentation analysis (ORA). The function can be easily replaced to use other enrichment methods (GSEA / rSEA / etc).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmtnZC5nZW5lcyA8LSB1bmlxdWUoZGF0YS5OSEJFWyxjKDEsMildKVxuXG4jIFRPRE8hIGNvbXBsZXRlIHRoZSBjb2RlIHRvIGV4dHJhY3QgdGhlIGRpZmZlcmVudGlhbGx5IGV4cHJlc3NlZCBnZW5lcyBpbiBkYXRhLk5IQkUgKGRlY2lkZSB3aGF0IGN1dG9mZiBmb3IgcHZhbHVlIGFuZCBsb2cyRkMgeW91IHdvdWxkIGNob29zZSlcbmRlZyA8LSAuLi4/Li4uXG5cbmV3cCA8LSBjbHVzdGVyUHJvZmlsZXI6OmVucmljaGVyKFxuICBkZWckR2VuZUlkLFxuICB1bml2ZXJzZSA9IGJrZ2QuZ2VuZXMkR2VuZUlkLFxuICBwQWRqdXN0TWV0aG9kID0gXCJmZHJcIixcbiAgcHZhbHVlQ3V0b2ZmID0gMC4wNSxcbiAgVEVSTTJHRU5FID0gd3BpZDJnZW5lLFxuICBURVJNMk5BTUUgPSB3cGlkMm5hbWUpXG5cbmV3cC5yZXMgPC0gYXMuZGF0YS5mcmFtZShld3ApIFxuYGBgIn0= -->
-<pre class="r"><code>bkgd.genes &lt;- unique(data.NHBE[,c(1,2)])
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+&gt; Interpretation
+
+- **Q6**: The WikiPathways human collection and the Disease Map have been combined. How many pathways are in the collection? (wpid2name)
+
+***
+
+## Pathway enrichment
+
+The clusterProfiler R-package is used to perform overrepresentation analysis (ORA). The function can be easily replaced to use other enrichment methods (GSEA / rSEA / etc). 
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYmtnZC5nZW5lcyA8LSB1bmlxdWUoZGF0YS5OSEJFWyxjKDEsMildKVxuXG4jIFRPRE8hIGNvbXBsZXRlIHRoZSBjb2RlIHRvIGV4dHJhY3QgdGhlIGRpZmZlcmVudGlhbGx5IGV4cHJlc3NlZCBnZW5lcyBpbiBkYXRhLk5IQkUgKGRlY2lkZSB3aGF0IGN1dG9mZiBmb3IgcHZhbHVlIGFuZCBsb2cyRkMgeW91IHdvdWxkIGNob29zZSlcbmRlZyA8LSAuLi4/Li4uXG5cbmV3cCA8LSBjbHVzdGVyUHJvZmlsZXI6OmVucmljaGVyKFxuICBkZWckR2VuZUlkLFxuICB1bml2ZXJzZSA9IGJrZ2QuZ2VuZXMkR2VuZUlkLFxuICBwQWRqdXN0TWV0aG9kID0gXFxmZHJcXCxcbiAgcHZhbHVlQ3V0b2ZmID0gMC4wNSxcbiAgVEVSTTJHRU5FID0gd3BpZDJnZW5lLFxuICBURVJNMk5BTUUgPSB3cGlkMm5hbWUpXG5cbmV3cC5yZXMgPC0gYXMuZGF0YS5mcmFtZShld3ApIFxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+bkgd.genes &lt;- unique(data.NHBE[,c(1,2)])
 
 # TODO! complete the code to extract the differentially expressed genes in data.NHBE (decide what cutoff for pvalue and log2FC you would choose)
 deg &lt;- ...?...
@@ -1935,104 +1965,173 @@ deg &lt;- ...?...
 ewp &lt;- clusterProfiler::enricher(
   deg$GeneId,
   universe = bkgd.genes$GeneId,
-  pAdjustMethod = &quot;fdr&quot;,
+  pAdjustMethod = \fdr\,
   pvalueCutoff = 0.05,
   TERM2GENE = wpid2gene,
   TERM2NAME = wpid2name)
 
 ewp.res &lt;- as.data.frame(ewp) </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<blockquote>
-<p>Interpretation</p>
-</blockquote>
-<ul>
-<li><strong>Q7</strong>: Which cutoff for deg did you choose and why?</li>
-<li><strong>Q8</strong>: How many of the measured and differentially expressed genes are actually present in at least one of the pathway models - actual background list? Hint: information is available in the ewp object. #length(<a href="mailto:ewp@universe" class="email">ewp@universe</a>) #length(deg<span class="math inline">\(GeneId[deg\)</span>GeneId %in% unique(wp2gene$gene)])</li>
-</ul>
-<hr />
-</div>
-<div id="visualize-enrichment-analysis-result" class="section level2">
-<h2>Visualize enrichment analysis result</h2>
-<p>Enrichment analysis results are often visualized in tables. You can also use a barplot, dotplot or emapplot if useful.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGV3cFsxOmRpbShld3AucmVzKVsxXV0sIGFlcyh4PXJlb3JkZXIoRGVzY3JpcHRpb24sIC1wdmFsdWUpLCB5PUNvdW50KSkgK1xuICBnZW9tX2JhcihzdGF0ID1cImlkZW50aXR5XCIsIGZpbGw9XCIjQkE4Q0Q3XCIpICtcbiAgY29vcmRfZmxpcCgpICtcbiAgbGFicyh4PVwiXCIsIHk9XCJERUcgZ2VuZSBjb3VudFwiLCBmaWxsPVwiXCIpICtcbiAgdGhlbWUoYXhpcy50ZXh0PWVsZW1lbnRfdGV4dChzaXplPTEwKSkgKyBcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uPVwibm9uZVwiKVxuXG53cml0ZS50YWJsZShld3AucmVzLCBmaWxlPVwiZW5yaWNoX3Jlcy50eHRcIiwgc2VwPVwiXFx0XCIsIHF1b3RlPUZBTFNFLCByb3cubmFtZXMgPSBGQUxTRSlcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(ewp[1:dim(ewp.res)[1]], aes(x=reorder(Description, -pvalue), y=Count)) +
-  geom_bar(stat =&quot;identity&quot;, fill=&quot;#BA8CD7&quot;) +
-  coord_flip() +
-  labs(x=&quot;&quot;, y=&quot;DEG gene count&quot;, fill=&quot;&quot;) +
-  theme(axis.text=element_text(size=10)) + 
-  theme(legend.position=&quot;none&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
 
-write.table(ewp.res, file=&quot;enrich_res.txt&quot;, sep=&quot;\t&quot;, quote=FALSE, row.names = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<blockquote>
-<p>Interpretation</p>
-</blockquote>
-<ul>
-<li><strong>Q9</strong>: If you look at the list of pathways affected, what kind of pathways show up? Do you see Disease Map pathways (starting with MINERVA)?</li>
-</ul>
-<hr />
-</div>
-</div>
-<div id="pathway-data-visualization" class="section level1">
-<h1>Pathway data visualization</h1>
-<p>The pathways can then be visualized with the gene expression data as shown with the “Type I Interferon Induction and Signaling During SARS-CoV-2 Infection” (WP4868) pathway from the WikiPathways COVID-19 portal.</p>
-<p>You can repeat the process with any of the WikiPathways pathways.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6Y3l0b3NjYXBlUGluZygpXG5pbnN0YWxsQXBwKCdXaWtpUGF0aHdheXMnKSBcblxuIyBvcGVuIHBhdGh3YXkgaW4gQ3l0b3NjYXBlXG5SQ3kzOjpjb21tYW5kc1J1bignd2lraXBhdGh3YXlzIGltcG9ydC1hcy1wYXRod2F5IGlkPVdQNDg2OCcpIFxudG9nZ2xlR3JhcGhpY3NEZXRhaWxzKClcbmxvYWRUYWJsZURhdGEoZGF0YS5OSEJFLCBkYXRhLmtleS5jb2x1bW4gPSBcIkVOU0VNQkxcIiwgdGFibGUua2V5LmNvbHVtbiA9IFwiRW5zZW1ibFwiKVxuXG4jIGFwcGx5IHZpc3VhbCBzdHlsZSB3aXRoID9zZXROb2RlQ29sb3JNYXBwaW5nXG4jIGNyZWF0ZSBhIGdyYWRpZW50IHZpc3VhbGl6YXRpb24gZm9yIGNvbHVtbjogbG9nMkZvbGRDaGFuZ2VcbiMgSW1wb3J0YW50IGFkZDogc3R5bGUubmFtZT1cIldpa2lQYXRod2F5c1wiXG4jIFRPRE8hXG5zZXROb2RlQ29sb3JNYXBwaW5nKC4uLj8uLi4pXG5cblJDeTM6OnNldFZpc3VhbFN0eWxlKFwiV2lraVBhdGh3YXlzXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>RCy3::cytoscapePing()
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+&gt; Interpretation
+
+- **Q7**: Which cutoff for deg did you choose and why?
+- **Q8**: How many of the measured and differentially expressed genes are actually present in at least one of the pathway models - actual background list? Hint: information is available in the ewp object.
+#length(ewp@universe)
+#length(deg$GeneId[deg$GeneId %in% unique(wp2gene$gene)])
+
+***
+
+## Visualize enrichment analysis result
+
+Enrichment analysis results are often visualized in tables. You can also use a barplot, dotplot or emapplot if useful.  
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZ2dwbG90KGV3cFsxOmRpbShld3AucmVzKVsxXV0sIGFlcyh4PXJlb3JkZXIoRGVzY3JpcHRpb24sIC1wdmFsdWUpLCB5PUNvdW50KSkgK1xuICBnZW9tX2JhcihzdGF0ID1cXGlkZW50aXR5XFwsIGZpbGw9XFwjQkE4Q0Q3XFwpICtcbiAgY29vcmRfZmxpcCgpICtcbiAgbGFicyh4PVxcXFwsIHk9XFxERUcgZ2VuZSBjb3VudFxcLCBmaWxsPVxcXFwpICtcbiAgdGhlbWUoYXhpcy50ZXh0PWVsZW1lbnRfdGV4dChzaXplPTEwKSkgKyBcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uPVxcbm9uZVxcKVxuXG53cml0ZS50YWJsZShld3AucmVzLCBmaWxlPVxcZW5yaWNoX3Jlcy50eHRcXCwgc2VwPVxcXFx0XFwsIHF1b3RlPUZBTFNFLCByb3cubmFtZXMgPSBGQUxTRSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+ggplot(ewp[1:dim(ewp.res)[1]], aes(x=reorder(Description, -pvalue), y=Count)) +
+  geom_bar(stat =\identity\, fill=\#BA8CD7\) +
+  coord_flip() +
+  labs(x=\\, y=\DEG gene count\, fill=\\) +
+  theme(axis.text=element_text(size=10)) + 
+  theme(legend.position=\none\)
+
+write.table(ewp.res, file=\enrich_res.txt\, sep=\\t\, quote=FALSE, row.names = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+&gt; Interpretation
+
+- **Q9**: If you look at the list of pathways affected, what kind of pathways show up? Do you see Disease Map pathways (starting with MINERVA)? 
+
+***
+
+# Pathway data visualization
+
+The pathways can then be visualized with the gene expression data as shown with the 
+&quot;Type I Interferon Induction and Signaling During SARS-CoV-2 Infection&quot; (WP4868) pathway from the WikiPathways COVID-19 portal. 
+
+You can repeat the process with any of the WikiPathways pathways.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuUkN5Mzo6Y3l0b3NjYXBlUGluZygpXG5pbnN0YWxsQXBwKCdXaWtpUGF0aHdheXMnKSBcblxuIyBvcGVuIHBhdGh3YXkgaW4gQ3l0b3NjYXBlXG5SQ3kzOjpjb21tYW5kc1J1bignd2lraXBhdGh3YXlzIGltcG9ydC1hcy1wYXRod2F5IGlkPVdQNDg2OCcpIFxudG9nZ2xlR3JhcGhpY3NEZXRhaWxzKClcbmxvYWRUYWJsZURhdGEoZGF0YS5OSEJFLCBkYXRhLmtleS5jb2x1bW4gPSBcXEVOU0VNQkxcXCwgdGFibGUua2V5LmNvbHVtbiA9IFxcRW5zZW1ibFxcKVxuXG4jIGFwcGx5IHZpc3VhbCBzdHlsZSB3aXRoID9zZXROb2RlQ29sb3JNYXBwaW5nXG4jIGNyZWF0ZSBhIGdyYWRpZW50IHZpc3VhbGl6YXRpb24gZm9yIGNvbHVtbjogbG9nMkZvbGRDaGFuZ2VcbiMgSW1wb3J0YW50IGFkZDogc3R5bGUubmFtZT1cXFdpa2lQYXRod2F5c1xcXG4jIFRPRE8hXG5zZXROb2RlQ29sb3JNYXBwaW5nKC4uLj8uLi4pXG5cblJDeTM6OnNldFZpc3VhbFN0eWxlKFxcV2lraVBhdGh3YXlzXFwpXG5cbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+RCy3::cytoscapePing()
 installApp(&#39;WikiPathways&#39;) 
 
 # open pathway in Cytoscape
 RCy3::commandsRun(&#39;wikipathways import-as-pathway id=WP4868&#39;) 
 toggleGraphicsDetails()
-loadTableData(data.NHBE, data.key.column = &quot;ENSEMBL&quot;, table.key.column = &quot;Ensembl&quot;)
+loadTableData(data.NHBE, data.key.column = \ENSEMBL\, table.key.column = \Ensembl\)
 
 # apply visual style with ?setNodeColorMapping
 # create a gradient visualization for column: log2FoldChange
-# Important add: style.name=&quot;WikiPathways&quot;
+# Important add: style.name=\WikiPathways\
 # TODO!
 setNodeColorMapping(...?...)
 
-RCy3::setVisualStyle(&quot;WikiPathways&quot;)
+RCy3::setVisualStyle(\WikiPathways\)
+</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+&gt; Interpretation
+
+- **Q10**: Which gradient did you choose for log2FC and why?
+- **Q11**: Is the Type I interferon induction pathway up- or down-regulated after COVID19 infection? Is that as expected? 
+
+*Note*: If you want to visualize the data on the pathways from the Disease Map, you need to export the pathway model as an SBML file and import it in Cytoscape using the cySBML app. Alternatively, you can request an account for MINERVA and upload your own dataset and create an overlay on the map (https://covid19map.elixir-luxembourg.org/minerva/index.xhtml?id=covid19_map_17Jun21 &gt; OVERLAYS). 
+
+
+*** 
+
+## Drug target information
+
+Next, we will add information about known drug-target interactions of the pathway of interest. We will import the pathway as a network and then extend it with drug-target information from DrugBank using the CyTargetLinker app.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUkN5Mzo6c2V0VmlzdWFsU3R5bGUoXCJXaWtpUGF0aHdheXMtQXMtTmV0d29ya1wiKVxuXG5gYGAifQ== --&gt;
+
+```r
+RCy3::setVisualStyle(&quot;WikiPathways-As-Network&quot;)
 </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgIG1lc3NhZ2UgXG5cIlZpc3VhbCBTdHlsZSBhcHBsaWVkLlwiIFxuIn0= -->
+<pre><code>                message 
+&quot;Visual Style applied.&quot; </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <blockquote>
 <p>Interpretation</p>
 </blockquote>
 <ul>
-<li><strong>Q10</strong>: Which gradient did you choose for log2FC and why?</li>
-<li><strong>Q11</strong>: Is the Type I interferon induction pathway up- or down-regulated after COVID19 infection? Is that as expected?</li>
+<li><strong>Q12</strong>: Are there proteins targeted by many known drugs? Can you find supporting literature regarding these genes or drugs in the context of COVID19?</li>
 </ul>
-<p><em>Note</em>: If you want to visualize the data on the pathways from the Disease Map, you need to export the pathway model as an SBML file and import it in Cytoscape using the cySBML app. Alternatively, you can request an account for MINERVA and upload your own dataset and create an overlay on the map (<a href="https://covid19map.elixir-luxembourg.org/minerva/index.xhtml?id=covid19_map_17Jun21" class="uri">https://covid19map.elixir-luxembourg.org/minerva/index.xhtml?id=covid19_map_17Jun21</a> &gt; OVERLAYS).</p>
 <hr />
+</div>
 <div id="save-cytoscape-output-and-session" class="section level2">
 <h2>Save Cytoscape output and session</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTYXZpbmcgb3V0cHV0XG5wbmcuZmlsZSA8LSBmaWxlLnBhdGgoZ2V0d2QoKSwgXCJwYXRod2F5LXZpei5wbmdcIilcbmV4cG9ydEltYWdlKHBuZy5maWxlLCdQTkcnLCB6b29tID0gNTAwKVxuY3lzLmZpbGUgPC0gZmlsZS5wYXRoKGdldHdkKCksIFwicGF0aHdheS12aXouY3lzXCIpXG5zYXZlU2Vzc2lvbihjeXMuZmlsZSkgXG5cbiNjb21tZW50IGZvbGxvd2luZyBsaW5lIGlmIHlvdSB3YW50IHRvIG1hbmlwdWxhdGUgdGhlIHZpc3VhbGl6YXRpb24gaW4gQ3l0b3NjYXBlXG5SQ3kzOjpjbG9zZVNlc3Npb24oc2F2ZS5iZWZvcmUuY2xvc2luZyA9IEYpXG5gYGAifQ== -->
-<pre class="r"><code># Saving output
-png.file &lt;- file.path(getwd(), &quot;pathway-viz.png&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBTYXZpbmcgb3V0cHV0XG5wbmcuZmlsZSA8LSBmaWxlLnBhdGgoZ2V0d2QoKSwgXFxwYXRod2F5LXZpei5wbmdcXClcbmV4cG9ydEltYWdlKHBuZy5maWxlLCdQTkcnLCB6b29tID0gNTAwKVxuY3lzLmZpbGUgPC0gZmlsZS5wYXRoKGdldHdkKCksIFxccGF0aHdheS12aXouY3lzXFwpXG5zYXZlU2Vzc2lvbihjeXMuZmlsZSkgXG5cbiNjb21tZW50IGZvbGxvd2luZyBsaW5lIGlmIHlvdSB3YW50IHRvIG1hbmlwdWxhdGUgdGhlIHZpc3VhbGl6YXRpb24gaW4gQ3l0b3NjYXBlXG5SQ3kzOjpjbG9zZVNlc3Npb24oc2F2ZS5iZWZvcmUuY2xvc2luZyA9IEYpXG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+# Saving output
+png.file &lt;- file.path(getwd(), \pathway-viz.png\)
 exportImage(png.file,&#39;PNG&#39;, zoom = 500)
-cys.file &lt;- file.path(getwd(), &quot;pathway-viz.cys&quot;)
+cys.file &lt;- file.path(getwd(), \pathway-viz.cys\)
 saveSession(cys.file) 
 
 #comment following line if you want to manipulate the visualization in Cytoscape
 RCy3::closeSession(save.before.closing = F)</code></pre>
+<p>```</p>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIklTTUIyMDIxIFR1dG9yaWFsIDggLSBXb3JrZmxvdyAxIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQphdXRob3I6ICJNYXJ0aW5hIFN1bW1lci1LdXRtb24iDQpkYXRlOiAiMjAgSnVseSAyMDIxIg0KdmVyc2lvbjogMS4wDQpjb21tZW50OiAiYWRhcHRlZCBmcm9tIEFsZXhhbmRlciBQaWNvJ3MgUGF0aHdheSBBbmFseXNpcyBWaWduZXR0ZSINCmxpY2Vuc2U6ICJNSVQgTGljZW5zZSINCi0tLQ0KDQojIEdlbmVyYWwgaW5zdHJ1Y3Rpb25zIChyZWFkIGJlZm9yZSBydW5uaW5nIHRoZSBjb2RlIHNuaXBwZXRzKQ0KSW4gdGhpcyBmaXJzdCB3b3JrZmxvdywgd2Ugd2lsbCBydW4gdGhlIHRyYW5zY3JpcHRvbWljcyBkYXRhIHByZS1wcm9jZXNzaW5nLCBlbnJpY2htZW50IGFuYWx5c2lzIHdpdGggdGhlIERpc2Vhc2UgTWFwIGFuZCBXaWtpUGF0aHdheXMsIGFuZCB2aXN1YWxpemUgdGhlIGRhdGEgb24gdGhlIHBhdGh3YXkgbW9kZWxzLg0KDQoqIFRoZSBzY3JpcHQgY29udGFpbnMgMTAgY29kZSBzbmlwcGV0cyB3aGljaCBzaG91bGQgYmUgcnVuIG9uZSBhZnRlciB0aGUgb3RoZXIuIA0KKiBNYWtlIHN1cmUgYWxsIHRoZSByZXF1aXJlZCBwYWNrYWdlcyBhcmUgaW5zdGFsbGVkIGJlZm9yZWhhbmQgKEJpb2NNYW5hZ2VyOjppbnN0YWxsKC4uLikpLiANCiogTWFrZSBzdXJlIHlvdSBoYXZlIEN5dG9zY2FwZSBpbnN0YWxsZWQgKHZlcnNpb24gMy44LjArKSBhbmQgcnVubmluZyBiZWZvcmUgeW91IHN0YXJ0IHJ1bm5pbmcgdGhlIHNjcmlwdC4gDQoNCioqKiANCg0KIyBTZXR1cA0KDQpMb2FkaW5nIGxpYnJhcmllcw0KYGBge3J9DQpvcHRpb25zKGNvbm5lY3Rpb25PYnNlcnZlciA9IE5VTEwpDQoNCmxpYnJhcnkoREVTZXEyKQ0KbGlicmFyeShoZXJlKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkoY2x1c3RlclByb2ZpbGVyKQ0KbGlicmFyeShvcmcuSHMuZWcuZGIpDQpsaWJyYXJ5KHJXaWtpUGF0aHdheXMpDQpsaWJyYXJ5KFJDeTMpDQpsaWJyYXJ5KFJDb2xvckJyZXdlcikNCmxpYnJhcnkoRW5oYW5jZWRWb2xjYW5vKQ0KbGlicmFyeShkYXRhLnRhYmxlKQ0KbGlicmFyeShyc3R1ZGlvYXBpKQ0KYGBgDQoNCmBgYHtyfQ0Kc2V0d2QoZGlybmFtZShnZXRBY3RpdmVEb2N1bWVudENvbnRleHQoKSRwYXRoKSkNCmBgYA0KDQoqKiogDQoNCiMjIExvYWQgZGF0YXNldA0KDQpXZSB0YWtlIHRoZSBzZXJpZXMgMSBmcm9tIHRoZSBmb2xsb3dpbmcgZGF0YXNldCAoTkhCRSBtb2NrIHRyZWF0ZWQgdmVyc3VzIFNBUlMtQ29WLTIgaW5mZWN0ZWQpOiANCiogaHR0cHM6Ly93d3cubmNiaS5ubG0ubmloLmdvdi9nZW8vcXVlcnkvYWNjLmNnaT9hY2M9R1NFMTQ3NTA3DQoNCndoaWNoIGlzIHJlbGF0ZWQgdG8gdGhlIGZvbGxvd2luZyBwdWJsaWNhdGlvbjoNCg0KQmxhbmNvLU1lbG8sIERhbmllbCwgZXQgYWwuICJJbWJhbGFuY2VkIGhvc3QgcmVzcG9uc2UgdG8gU0FSUy1Db1YtMiBkcml2ZXMgZGV2ZWxvcG1lbnQgb2YgQ09WSUQtMTkuIiBDZWxsIDE4MS41ICgyMDIwKTogMTAzNi0xMDQ1Lg0KDQpgYGB7cn0NCkdTRTE0NzUwN19yYXdfY291bnRzIDwtIHJlYWQuY3N2KCJkYXRhL0dTRTE0NzUwN19SYXdSZWFkQ291bnRzX0h1bWFuLnRzdiIsIHNlcCA9ICJcdCIpDQojIGZpbHRlciBOSEJFIHNhbXBsZXMNCmRhdGEgPC0gR1NFMTQ3NTA3X3Jhd19jb3VudHNbLGMoMjo3KV0NCnJvdy5uYW1lcyhkYXRhKSA8LSBHU0UxNDc1MDdfcmF3X2NvdW50cyRYDQpybShHU0UxNDc1MDdfcmF3X2NvdW50cykNCg0KIyBmb3JtYXR0aW5nIHRoZSBkYXRhIHRhYmxlDQpkYXRhLmNvbCA8LSBhcy5kYXRhLmZyYW1lKG1hdHJpeChOQSxsZW5ndGgobmFtZXMoZGF0YSkpLDEpKQ0KbmFtZXMoZGF0YS5jb2wpIDwtIGMoImNvbmRpdGlvbiIpDQpyb3cubmFtZXMoZGF0YS5jb2wpIDwtIG5hbWVzKGRhdGEpDQpkYXRhLmNvbCRjb25kaXRpb24gPC0gZ3N1YigiU2VyaWVzMV8iLCAiIiwgcm93Lm5hbWVzKGRhdGEuY29sKSkNCmRhdGEuY29sJGNvbmRpdGlvbiA8LSBmYWN0b3IoZ3N1YigiX1sxLTNdJCIsICIiLCBkYXRhLmNvbCRjb25kaXRpb24pKQ0KDQpoZWFkKGRhdGEuY29sKQ0KaGVhZChkYXRhKQ0KYGBgDQoNCj4gRXhwbG9yZSB0aGUgdHdvIGNyZWF0ZWQgZGF0YSBmcmFtZXM6IGRhdGEgYW5kIGRhdGEuY29sDQoNCi0gKipRMSoqOiBIb3cgbWFueSBzYW1wbGVzIGFyZSBpbiB0aGUgZGF0YXNldD8NCg0KKioqDQoNCiMjIERpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMNCg0KTmV4dCwgd2Ugd2lsbCBydW4gdGhlIGRpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMgdXNpbmcgdGhlIFItcGFja2FnZSBERVNlcTIuIA0KDQpgYGB7cn0NCmRkcyA8LSBERVNlcURhdGFTZXRGcm9tTWF0cml4KGNvdW50RGF0YSA9IGFzLm1hdHJpeChkYXRhKSxjb2xEYXRhID0gZGF0YS5jb2wsIGRlc2lnbiA9IH4gY29uZGl0aW9uKQ0KIyMgU2V0IGNvbnRyb2wNCmRkcyRjb25kaXRpb24gPC0gcmVsZXZlbChkZHMkY29uZGl0aW9uLCByZWYgPSBsZXZlbHMoZGF0YS5jb2wkY29uZGl0aW9uKVsxXSkNCiMjIENhcnJ5IG91dCBkaWZmIGV4cA0KZGRzIDwtIERFU2VxKGRkcykNCiMjIFNlZSB0aGUgY29tcGFyaXNvbnMgY2FycmllZCBvdXQNCmRhdGEuY29tcCA8LSByZXN1bHRzTmFtZXMoZGRzKQ0KIyMgR2V0IHJlc3VsdHMgdGFibGUNCmRhdGEucmVzIDwtIHJlc3VsdHMoZGRzLCBuYW1lPWRhdGEuY29tcFsyXSkNCg0KZGF0YS5yZXMuZGYgPC0gYXMuZGF0YS5mcmFtZShkYXRhLnJlcykgJT4lIA0KICAgIHRpYmJsZTo6cm93bmFtZXNfdG9fY29sdW1uKHZhciA9ICJHZW5lSUQiKSAlPiUgDQogICAgZHBseXI6OnNlbGVjdChjKEdlbmVJRCwgbG9nMkZvbGRDaGFuZ2UsIHB2YWx1ZSwgcGFkaiwgc3RhdCkpICU+JSANCiAgICB0aWJibGU6OmNvbHVtbl90b19yb3duYW1lcyh2YXIgPSAiR2VuZUlEIikgDQoNCmRhdGEucmVzLmRmIDwtIGRhdGEudGFibGU6OnNldERUKGRhdGEucmVzLmRmLCBrZWVwLnJvd25hbWVzID0gVFJVRSlbXQ0KY29sbmFtZXMoZGF0YS5yZXMuZGYpWzFdIDwtICJHZW5lSUQiDQoNCiMgaWRlbnRpZmllciBtYXBwaW5nIA0KaGdjbjJlbnRyZXogPC0gY2x1c3RlclByb2ZpbGVyOjpiaXRyKGRhdGEucmVzLmRmJEdlbmVJRCwgZnJvbVR5cGUgPSAiU1lNQk9MIix0b1R5cGUgPSBjKCJFTlRSRVpJRCIsIlNZTUJPTCIsIkVOU0VNQkwiKSwgT3JnRGIgPSBvcmcuSHMuZWcuZGIpDQpkYXRhLm1hcHBlZCA8LSBtZXJnZShkYXRhLnJlcy5kZiwgaGdjbjJlbnRyZXosIGJ5Lng9IkdlbmVJRCIsIGJ5Lnk9IlNZTUJPTCIsIGFsbC54ID0gVFJVRSkNCmRhdGEubWFwcGVkIDwtIHN1YnNldChkYXRhLm1hcHBlZCwgc2VsZWN0PWMoNiwxOjUsNykpDQpybShoZ2NuMmVudHJleixkZHMsZGF0YS5yZXMpDQoNCiMgZmlsdGVyIGdlbmVzIHdpdGhvdXQgRW50cmV6IEdlbmUgaWRlbnRpZmllcg0KZGF0YS5OSEJFIDwtIGRhdGEubWFwcGVkICU+JSB0aWR5cjo6ZHJvcF9uYShFTlRSRVpJRCkNCmNvbG5hbWVzKGRhdGEuTkhCRSlbMl0gPC0gIkdlbmVOYW1lIg0KY29sbmFtZXMoZGF0YS5OSEJFKVsxXSA8LSAiR2VuZUlkIg0KDQp3cml0ZS50YWJsZShkYXRhLk5IQkUsIGZpbGU9ImRhdGEvZGVnLWRhdGEudHh0IiwgcXVvdGU9RkFMU0UsIHNlcD0iXHQiLCByb3cubmFtZXMgPSBGQUxTRSwgY29sLm5hbWVzPVRSVUUpDQpgYGANCg0KDQo+IExldCdzIGV4cGxvcmUgdGhlIGRpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMgcmVzdWx0DQoNCi0gKipRMioqOiBIb3cgbWFueSBnZW5lcyBhcmUgc2lnbmlmaWNhbnRseSB1cC0gb3IgZG93bi1yZWd1bGF0ZWQgYWZ0ZXIgQ09WSUQxOSBpbmZlY3Rpb24/IChmaWx0ZXIgZGF0YS5OSEJFKQ0KLSAqKlEzKio6IFdoeSBkbyBzb21lIGdlbmVzIGhhdmUgTkEgdmFsdWVzPyAoY2hlY2s6IGh0dHBzOi8vYmlvY29uZHVjdG9yLm9yZy9wYWNrYWdlcy9yZWxlYXNlL2Jpb2MvdmlnbmV0dGVzL0RFU2VxMi9pbnN0L2RvYy9ERVNlcTIuaHRtbCN3aHktYXJlLXNvbWUtcC12YWx1ZXMtc2V0LXRvLW5hKQ0KDQoqKioNCg0KIyMgRGF0YSB2aXN1YWxpemF0aW9uDQoNCkxldCdzIHVzZSBhIHZvbGNhbm8gcGxvdCB0byB2aXN1YWxpemUgdGhlIHJlc3VsdCBvZiB0aGUgZGlmZmVyZW50aWFsIGdlbmUgZXhwcmVzc2lvbiBhbmFseXNpcyByZXN1bHQgYW5kIHNhdmUgdGhlIGRhdGEgdGFibGUgaW4gYSBmaWxlIHRvIGtlZXAgYSByZWNvcmQuIA0KDQpgYGB7ciBmaWcxLCBmaWcud2lkdGg9OCwgZmlnLmhlaWdodD02fQ0KRW5oYW5jZWRWb2xjYW5vKGRhdGEucmVzLmRmLCB0aXRsZSA9ICJOSEJFIGNlbGwgbGluZSIsIGxhYiA9IGRhdGEucmVzLmRmJEdlbmVJRCwgeCA9ICdsb2cyRm9sZENoYW5nZScsIHkgPSAncHZhbHVlJywgcEN1dG9mZiA9IDAuMDUsIEZDY3V0b2ZmID0gMC41ODUsIGxhYlNpemUgPSAzKQ0KDQp3cml0ZS50YWJsZShkYXRhLk5IQkUsIGZpbGU9IkRFR19EYXRhLnR4dCIsIHNlcD0iXHQiLCBxdW90ZT1GQUxTRSwgcm93Lm5hbWVzID0gRkFMU0UpDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTQqKjogQXJlIHRoZXJlIG1vcmUgdXAtIG9yIGRvd24tcmVndWxhdGVkIGdlbmVzPyBXaGF0IGN1dG9mZnMgaGF2ZSBiZWVuIHVzZWQgZm9yIHB2YWx1ZSBhbmQgbG9nMkZDIChzZWUgbGluZSAxMzIpPw0KLSAqKlE1Kio6IFdoYXQgYXJlIHRoZSBtb3N0IHNpZ25pZmljYW50bHkgY2hhbmdlZCBnZW5lcz8gRG8gYSBxdWljayBQdWJtZWQgc2VhcmNoIHRvIHNlZSBpZiB0aGV5IGhhdmUgYSBrbm93biBsaW5rIHRvIENPVklEMTkuIA0KDQoqKioNCg0KIyMgUGF0aHdheSBjb2xsZWN0aW9uDQoNCldlIHdhbnQgdG8gcGVyZm9ybSBwYXRod2F5IGVucmljaG1lbnQgd2l0aCB0aGUgZ2VuZSBzZXRzIG9mIGFsbCBwYXRod2F5IG1vZGVscyBpbiBXaWtpUGF0aHdheXMgKGh1bWFuIG9ubHkpIGFuZCB0aGUgQ09WSUQtMTkgRGlzZWFzZSBNYXAgbWFwcy4NCg0KYGBge3J9DQojIGNvbWJpbmUgV2lraVBhdGh3YXlzIGFuZCBDT1ZJRDE5IERpc2Vhc2UgTWFwIGdlbmUgc2V0cw0Kd3AyZ2VuZSA8LSByZWFkUGF0aHdheUdNVCgiZGF0YS93aWtpcGF0aHdheXMtMjAyMTA3MTAtZ210LUhvbW9fc2FwaWVucy5nbXQiKQ0KZG0yZ2VuZSA8LSByZWFkUGF0aHdheUdNVCgiZGF0YS9DT1ZJRDE5X0Rpc2Vhc2VNYXBfSnVuZTIwMjEuZ210IikNCnB3eTJnZW5lIDwtIGRwbHlyOjpiaW5kX3Jvd3Mod3AyZ2VuZSwgZG0yZ2VuZSkNCg0Kd3BpZDJnZW5lIDwtIHB3eTJnZW5lICU+JSBkcGx5cjo6c2VsZWN0KHdwaWQsZ2VuZSkgI1RFUk0yR0VORQ0Kd3BpZDJuYW1lIDwtIHVuaXF1ZShwd3kyZ2VuZSAlPiUgZHBseXI6OnNlbGVjdCh3cGlkLG5hbWUpKSAjVEVSTTJOQU1FDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTYqKjogVGhlIFdpa2lQYXRod2F5cyBodW1hbiBjb2xsZWN0aW9uIGFuZCB0aGUgRGlzZWFzZSBNYXAgaGF2ZSBiZWVuIGNvbWJpbmVkLiBIb3cgbWFueSBwYXRod2F5cyBhcmUgaW4gdGhlIGNvbGxlY3Rpb24/ICh3cGlkMm5hbWUpDQoNCioqKg0KDQojIyBQYXRod2F5IGVucmljaG1lbnQNCg0KVGhlIGNsdXN0ZXJQcm9maWxlciBSLXBhY2thZ2UgaXMgdXNlZCB0byBwZXJmb3JtIG92ZXJyZXByZXNlbnRhdGlvbiBhbmFseXNpcyAoT1JBKS4gVGhlIGZ1bmN0aW9uIGNhbiBiZSBlYXNpbHkgcmVwbGFjZWQgdG8gdXNlIG90aGVyIGVucmljaG1lbnQgbWV0aG9kcyAoR1NFQSAvIHJTRUEgLyBldGMpLiANCg0KYGBge3J9DQpia2dkLmdlbmVzIDwtIHVuaXF1ZShkYXRhLk5IQkVbLGMoMSwyKV0pDQoNCiMgVE9ETyEgY29tcGxldGUgdGhlIGNvZGUgdG8gZXh0cmFjdCB0aGUgZGlmZmVyZW50aWFsbHkgZXhwcmVzc2VkIGdlbmVzIGluIGRhdGEuTkhCRSAoZGVjaWRlIHdoYXQgY3V0b2ZmIGZvciBwdmFsdWUgYW5kIGxvZzJGQyB5b3Ugd291bGQgY2hvb3NlKQ0KZGVnIDwtIC4uLj8uLi4NCg0KZXdwIDwtIGNsdXN0ZXJQcm9maWxlcjo6ZW5yaWNoZXIoDQogIGRlZyRHZW5lSWQsDQogIHVuaXZlcnNlID0gYmtnZC5nZW5lcyRHZW5lSWQsDQogIHBBZGp1c3RNZXRob2QgPSAiZmRyIiwNCiAgcHZhbHVlQ3V0b2ZmID0gMC4wNSwNCiAgVEVSTTJHRU5FID0gd3BpZDJnZW5lLA0KICBURVJNMk5BTUUgPSB3cGlkMm5hbWUpDQoNCmV3cC5yZXMgPC0gYXMuZGF0YS5mcmFtZShld3ApIA0KYGBgDQoNCj4gSW50ZXJwcmV0YXRpb24NCg0KLSAqKlE3Kio6IFdoaWNoIGN1dG9mZiBmb3IgZGVnIGRpZCB5b3UgY2hvb3NlIGFuZCB3aHk/DQotICoqUTgqKjogSG93IG1hbnkgb2YgdGhlIG1lYXN1cmVkIGFuZCBkaWZmZXJlbnRpYWxseSBleHByZXNzZWQgZ2VuZXMgYXJlIGFjdHVhbGx5IHByZXNlbnQgaW4gYXQgbGVhc3Qgb25lIG9mIHRoZSBwYXRod2F5IG1vZGVscyAtIGFjdHVhbCBiYWNrZ3JvdW5kIGxpc3Q/IEhpbnQ6IGluZm9ybWF0aW9uIGlzIGF2YWlsYWJsZSBpbiB0aGUgZXdwIG9iamVjdC4NCiNsZW5ndGgoZXdwQHVuaXZlcnNlKQ0KI2xlbmd0aChkZWckR2VuZUlkW2RlZyRHZW5lSWQgJWluJSB1bmlxdWUod3AyZ2VuZSRnZW5lKV0pDQoNCioqKg0KDQojIyBWaXN1YWxpemUgZW5yaWNobWVudCBhbmFseXNpcyByZXN1bHQNCg0KRW5yaWNobWVudCBhbmFseXNpcyByZXN1bHRzIGFyZSBvZnRlbiB2aXN1YWxpemVkIGluIHRhYmxlcy4gWW91IGNhbiBhbHNvIHVzZSBhIGJhcnBsb3QsIGRvdHBsb3Qgb3IgZW1hcHBsb3QgaWYgdXNlZnVsLiAgDQoNCmBgYHtyIGZpZzIsIGZpZy53aWR0aD03LCBmaWcuaGVpZ2h0PTd9DQpnZ3Bsb3QoZXdwWzE6ZGltKGV3cC5yZXMpWzFdXSwgYWVzKHg9cmVvcmRlcihEZXNjcmlwdGlvbiwgLXB2YWx1ZSksIHk9Q291bnQpKSArDQogIGdlb21fYmFyKHN0YXQgPSJpZGVudGl0eSIsIGZpbGw9IiNCQThDRDciKSArDQogIGNvb3JkX2ZsaXAoKSArDQogIGxhYnMoeD0iIiwgeT0iREVHIGdlbmUgY291bnQiLCBmaWxsPSIiKSArDQogIHRoZW1lKGF4aXMudGV4dD1lbGVtZW50X3RleHQoc2l6ZT0xMCkpICsgDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbj0ibm9uZSIpDQoNCndyaXRlLnRhYmxlKGV3cC5yZXMsIGZpbGU9ImVucmljaF9yZXMudHh0Iiwgc2VwPSJcdCIsIHF1b3RlPUZBTFNFLCByb3cubmFtZXMgPSBGQUxTRSkNCmBgYA0KDQo+IEludGVycHJldGF0aW9uDQoNCi0gKipROSoqOiBJZiB5b3UgbG9vayBhdCB0aGUgbGlzdCBvZiBwYXRod2F5cyBhZmZlY3RlZCwgd2hhdCBraW5kIG9mIHBhdGh3YXlzIHNob3cgdXA/IERvIHlvdSBzZWUgRGlzZWFzZSBNYXAgcGF0aHdheXMgKHN0YXJ0aW5nIHdpdGggTUlORVJWQSk/IA0KDQoqKioNCg0KIyBQYXRod2F5IGRhdGEgdmlzdWFsaXphdGlvbg0KDQpUaGUgcGF0aHdheXMgY2FuIHRoZW4gYmUgdmlzdWFsaXplZCB3aXRoIHRoZSBnZW5lIGV4cHJlc3Npb24gZGF0YSBhcyBzaG93biB3aXRoIHRoZSANCiJUeXBlIEkgSW50ZXJmZXJvbiBJbmR1Y3Rpb24gYW5kIFNpZ25hbGluZyBEdXJpbmcgU0FSUy1Db1YtMiBJbmZlY3Rpb24iIChXUDQ4NjgpIHBhdGh3YXkgZnJvbSB0aGUgV2lraVBhdGh3YXlzIENPVklELTE5IHBvcnRhbC4gDQoNCllvdSBjYW4gcmVwZWF0IHRoZSBwcm9jZXNzIHdpdGggYW55IG9mIHRoZSBXaWtpUGF0aHdheXMgcGF0aHdheXMuDQoNCmBgYHtyfQ0KUkN5Mzo6Y3l0b3NjYXBlUGluZygpDQppbnN0YWxsQXBwKCdXaWtpUGF0aHdheXMnKSANCg0KIyBvcGVuIHBhdGh3YXkgaW4gQ3l0b3NjYXBlDQpSQ3kzOjpjb21tYW5kc1J1bignd2lraXBhdGh3YXlzIGltcG9ydC1hcy1wYXRod2F5IGlkPVdQNDg2OCcpIA0KdG9nZ2xlR3JhcGhpY3NEZXRhaWxzKCkNCmxvYWRUYWJsZURhdGEoZGF0YS5OSEJFLCBkYXRhLmtleS5jb2x1bW4gPSAiRU5TRU1CTCIsIHRhYmxlLmtleS5jb2x1bW4gPSAiRW5zZW1ibCIpDQoNCiMgYXBwbHkgdmlzdWFsIHN0eWxlIHdpdGggP3NldE5vZGVDb2xvck1hcHBpbmcNCiMgY3JlYXRlIGEgZ3JhZGllbnQgdmlzdWFsaXphdGlvbiBmb3IgY29sdW1uOiBsb2cyRm9sZENoYW5nZQ0KIyBJbXBvcnRhbnQgYWRkOiBzdHlsZS5uYW1lPSJXaWtpUGF0aHdheXMiDQojIFRPRE8hDQpzZXROb2RlQ29sb3JNYXBwaW5nKC4uLj8uLi4pDQoNClJDeTM6OnNldFZpc3VhbFN0eWxlKCJXaWtpUGF0aHdheXMiKQ0KDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTEwKio6IFdoaWNoIGdyYWRpZW50IGRpZCB5b3UgY2hvb3NlIGZvciBsb2cyRkMgYW5kIHdoeT8NCi0gKipRMTEqKjogSXMgdGhlIFR5cGUgSSBpbnRlcmZlcm9uIGluZHVjdGlvbiBwYXRod2F5IHVwLSBvciBkb3duLXJlZ3VsYXRlZCBhZnRlciBDT1ZJRDE5IGluZmVjdGlvbj8gSXMgdGhhdCBhcyBleHBlY3RlZD8gDQoNCipOb3RlKjogSWYgeW91IHdhbnQgdG8gdmlzdWFsaXplIHRoZSBkYXRhIG9uIHRoZSBwYXRod2F5cyBmcm9tIHRoZSBEaXNlYXNlIE1hcCwgeW91IG5lZWQgdG8gZXhwb3J0IHRoZSBwYXRod2F5IG1vZGVsIGFzIGFuIFNCTUwgZmlsZSBhbmQgaW1wb3J0IGl0IGluIEN5dG9zY2FwZSB1c2luZyB0aGUgY3lTQk1MIGFwcC4gQWx0ZXJuYXRpdmVseSwgeW91IGNhbiByZXF1ZXN0IGFuIGFjY291bnQgZm9yIE1JTkVSVkEgYW5kIHVwbG9hZCB5b3VyIG93biBkYXRhc2V0IGFuZCBjcmVhdGUgYW4gb3ZlcmxheSBvbiB0aGUgbWFwIChodHRwczovL2NvdmlkMTltYXAuZWxpeGlyLWx1eGVtYm91cmcub3JnL21pbmVydmEvaW5kZXgueGh0bWw/aWQ9Y292aWQxOV9tYXBfMTdKdW4yMSA+IE9WRVJMQVlTKS4gDQoNCioqKg0KDQojIyBTYXZlIEN5dG9zY2FwZSBvdXRwdXQgYW5kIHNlc3Npb24NCg0KYGBge3J9DQojIFNhdmluZyBvdXRwdXQNCnBuZy5maWxlIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAicGF0aHdheS12aXoucG5nIikNCmV4cG9ydEltYWdlKHBuZy5maWxlLCdQTkcnLCB6b29tID0gNTAwKQ0KY3lzLmZpbGUgPC0gZmlsZS5wYXRoKGdldHdkKCksICJwYXRod2F5LXZpei5jeXMiKQ0Kc2F2ZVNlc3Npb24oY3lzLmZpbGUpIA0KDQojY29tbWVudCBmb2xsb3dpbmcgbGluZSBpZiB5b3Ugd2FudCB0byBtYW5pcHVsYXRlIHRoZSB2aXN1YWxpemF0aW9uIGluIEN5dG9zY2FwZQ0KUkN5Mzo6Y2xvc2VTZXNzaW9uKHNhdmUuYmVmb3JlLmNsb3NpbmcgPSBGKQ0KYGBg</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIklTTUIyMDIxIFR1dG9yaWFsIDggLSBXb3JrZmxvdyAxIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQphdXRob3I6ICJNYXJ0aW5hIFN1bW1lci1LdXRtb24iDQpkYXRlOiAiMjAgSnVseSAyMDIxIg0KdmVyc2lvbjogMS4wDQpjb21tZW50OiAiYWRhcHRlZCBmcm9tIEFsZXhhbmRlciBQaWNvJ3MgUGF0aHdheSBBbmFseXNpcyBWaWduZXR0ZSINCmxpY2Vuc2U6ICJNSVQgTGljZW5zZSINCi0tLQ0KDQojIEdlbmVyYWwgaW5zdHJ1Y3Rpb25zIChyZWFkIGJlZm9yZSBydW5uaW5nIHRoZSBjb2RlIHNuaXBwZXRzKQ0KSW4gdGhpcyBmaXJzdCB3b3JrZmxvdywgd2Ugd2lsbCBydW4gdGhlIHRyYW5zY3JpcHRvbWljcyBkYXRhIHByZS1wcm9jZXNzaW5nLCBlbnJpY2htZW50IGFuYWx5c2lzIHdpdGggdGhlIERpc2Vhc2UgTWFwIGFuZCBXaWtpUGF0aHdheXMsIGFuZCB2aXN1YWxpemUgdGhlIGRhdGEgb24gdGhlIHBhdGh3YXkgbW9kZWxzLg0KDQoqIFRoZSBzY3JpcHQgY29udGFpbnMgMTAgY29kZSBzbmlwcGV0cyB3aGljaCBzaG91bGQgYmUgcnVuIG9uZSBhZnRlciB0aGUgb3RoZXIuIA0KKiBNYWtlIHN1cmUgYWxsIHRoZSByZXF1aXJlZCBwYWNrYWdlcyBhcmUgaW5zdGFsbGVkIGJlZm9yZWhhbmQgKEJpb2NNYW5hZ2VyOjppbnN0YWxsKC4uLikpLiANCiogTWFrZSBzdXJlIHlvdSBoYXZlIEN5dG9zY2FwZSBpbnN0YWxsZWQgKHZlcnNpb24gMy44LjArKSBhbmQgcnVubmluZyBiZWZvcmUgeW91IHN0YXJ0IHJ1bm5pbmcgdGhlIHNjcmlwdC4gDQoNCioqKiANCg0KIyBTZXR1cA0KDQpMb2FkaW5nIGxpYnJhcmllcw0KYGBge3J9DQpvcHRpb25zKGNvbm5lY3Rpb25PYnNlcnZlciA9IE5VTEwpDQoNCmxpYnJhcnkoREVTZXEyKQ0KbGlicmFyeShoZXJlKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkoY2x1c3RlclByb2ZpbGVyKQ0KbGlicmFyeShvcmcuSHMuZWcuZGIpDQpsaWJyYXJ5KHJXaWtpUGF0aHdheXMpDQpsaWJyYXJ5KFJDeTMpDQpsaWJyYXJ5KFJDb2xvckJyZXdlcikNCmxpYnJhcnkoRW5oYW5jZWRWb2xjYW5vKQ0KbGlicmFyeShkYXRhLnRhYmxlKQ0KbGlicmFyeShyc3R1ZGlvYXBpKQ0KYGBgDQoNCmBgYHtyfQ0Kc2V0d2QoZGlybmFtZShnZXRBY3RpdmVEb2N1bWVudENvbnRleHQoKSRwYXRoKSkNCmBgYA0KDQoqKiogDQoNCiMjIExvYWQgZGF0YXNldA0KDQpXZSB0YWtlIHRoZSBzZXJpZXMgMSBmcm9tIHRoZSBmb2xsb3dpbmcgZGF0YXNldCAoTkhCRSBtb2NrIHRyZWF0ZWQgdmVyc3VzIFNBUlMtQ29WLTIgaW5mZWN0ZWQpOiANCiogaHR0cHM6Ly93d3cubmNiaS5ubG0ubmloLmdvdi9nZW8vcXVlcnkvYWNjLmNnaT9hY2M9R1NFMTQ3NTA3DQoNCndoaWNoIGlzIHJlbGF0ZWQgdG8gdGhlIGZvbGxvd2luZyBwdWJsaWNhdGlvbjoNCg0KQmxhbmNvLU1lbG8sIERhbmllbCwgZXQgYWwuICJJbWJhbGFuY2VkIGhvc3QgcmVzcG9uc2UgdG8gU0FSUy1Db1YtMiBkcml2ZXMgZGV2ZWxvcG1lbnQgb2YgQ09WSUQtMTkuIiBDZWxsIDE4MS41ICgyMDIwKTogMTAzNi0xMDQ1Lg0KDQpgYGB7cn0NCkdTRTE0NzUwN19yYXdfY291bnRzIDwtIHJlYWQuY3N2KCJkYXRhL0dTRTE0NzUwN19SYXdSZWFkQ291bnRzX0h1bWFuLnRzdiIsIHNlcCA9ICJcdCIpDQojIGZpbHRlciBOSEJFIHNhbXBsZXMNCmRhdGEgPC0gR1NFMTQ3NTA3X3Jhd19jb3VudHNbLGMoMjo3KV0NCnJvdy5uYW1lcyhkYXRhKSA8LSBHU0UxNDc1MDdfcmF3X2NvdW50cyRYDQpybShHU0UxNDc1MDdfcmF3X2NvdW50cykNCg0KIyBmb3JtYXR0aW5nIHRoZSBkYXRhIHRhYmxlDQpkYXRhLmNvbCA8LSBhcy5kYXRhLmZyYW1lKG1hdHJpeChOQSxsZW5ndGgobmFtZXMoZGF0YSkpLDEpKQ0KbmFtZXMoZGF0YS5jb2wpIDwtIGMoImNvbmRpdGlvbiIpDQpyb3cubmFtZXMoZGF0YS5jb2wpIDwtIG5hbWVzKGRhdGEpDQpkYXRhLmNvbCRjb25kaXRpb24gPC0gZ3N1YigiU2VyaWVzMV8iLCAiIiwgcm93Lm5hbWVzKGRhdGEuY29sKSkNCmRhdGEuY29sJGNvbmRpdGlvbiA8LSBmYWN0b3IoZ3N1YigiX1sxLTNdJCIsICIiLCBkYXRhLmNvbCRjb25kaXRpb24pKQ0KDQpoZWFkKGRhdGEuY29sKQ0KaGVhZChkYXRhKQ0KYGBgDQoNCj4gRXhwbG9yZSB0aGUgdHdvIGNyZWF0ZWQgZGF0YSBmcmFtZXM6IGRhdGEgYW5kIGRhdGEuY29sDQoNCi0gKipRMSoqOiBIb3cgbWFueSBzYW1wbGVzIGFyZSBpbiB0aGUgZGF0YXNldD8NCg0KKioqDQoNCiMjIERpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMNCg0KTmV4dCwgd2Ugd2lsbCBydW4gdGhlIGRpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMgdXNpbmcgdGhlIFItcGFja2FnZSBERVNlcTIuIA0KDQpgYGB7cn0NCmRkcyA8LSBERVNlcURhdGFTZXRGcm9tTWF0cml4KGNvdW50RGF0YSA9IGFzLm1hdHJpeChkYXRhKSxjb2xEYXRhID0gZGF0YS5jb2wsIGRlc2lnbiA9IH4gY29uZGl0aW9uKQ0KIyMgU2V0IGNvbnRyb2wNCmRkcyRjb25kaXRpb24gPC0gcmVsZXZlbChkZHMkY29uZGl0aW9uLCByZWYgPSBsZXZlbHMoZGF0YS5jb2wkY29uZGl0aW9uKVsxXSkNCiMjIENhcnJ5IG91dCBkaWZmIGV4cA0KZGRzIDwtIERFU2VxKGRkcykNCiMjIFNlZSB0aGUgY29tcGFyaXNvbnMgY2FycmllZCBvdXQNCmRhdGEuY29tcCA8LSByZXN1bHRzTmFtZXMoZGRzKQ0KIyMgR2V0IHJlc3VsdHMgdGFibGUNCmRhdGEucmVzIDwtIHJlc3VsdHMoZGRzLCBuYW1lPWRhdGEuY29tcFsyXSkNCg0KZGF0YS5yZXMuZGYgPC0gYXMuZGF0YS5mcmFtZShkYXRhLnJlcykgJT4lIA0KICAgIHRpYmJsZTo6cm93bmFtZXNfdG9fY29sdW1uKHZhciA9ICJHZW5lSUQiKSAlPiUgDQogICAgZHBseXI6OnNlbGVjdChjKEdlbmVJRCwgbG9nMkZvbGRDaGFuZ2UsIHB2YWx1ZSwgcGFkaiwgc3RhdCkpICU+JSANCiAgICB0aWJibGU6OmNvbHVtbl90b19yb3duYW1lcyh2YXIgPSAiR2VuZUlEIikgDQoNCmRhdGEucmVzLmRmIDwtIGRhdGEudGFibGU6OnNldERUKGRhdGEucmVzLmRmLCBrZWVwLnJvd25hbWVzID0gVFJVRSlbXQ0KY29sbmFtZXMoZGF0YS5yZXMuZGYpWzFdIDwtICJHZW5lSUQiDQoNCiMgaWRlbnRpZmllciBtYXBwaW5nIA0KaGdjbjJlbnRyZXogPC0gY2x1c3RlclByb2ZpbGVyOjpiaXRyKGRhdGEucmVzLmRmJEdlbmVJRCwgZnJvbVR5cGUgPSAiU1lNQk9MIix0b1R5cGUgPSBjKCJFTlRSRVpJRCIsIlNZTUJPTCIsIkVOU0VNQkwiKSwgT3JnRGIgPSBvcmcuSHMuZWcuZGIpDQpkYXRhLm1hcHBlZCA8LSBtZXJnZShkYXRhLnJlcy5kZiwgaGdjbjJlbnRyZXosIGJ5Lng9IkdlbmVJRCIsIGJ5Lnk9IlNZTUJPTCIsIGFsbC54ID0gVFJVRSkNCmRhdGEubWFwcGVkIDwtIHN1YnNldChkYXRhLm1hcHBlZCwgc2VsZWN0PWMoNiwxOjUsNykpDQpybShoZ2NuMmVudHJleixkZHMsZGF0YS5yZXMpDQoNCiMgZmlsdGVyIGdlbmVzIHdpdGhvdXQgRW50cmV6IEdlbmUgaWRlbnRpZmllcg0KZGF0YS5OSEJFIDwtIGRhdGEubWFwcGVkICU+JSB0aWR5cjo6ZHJvcF9uYShFTlRSRVpJRCkNCmNvbG5hbWVzKGRhdGEuTkhCRSlbMl0gPC0gIkdlbmVOYW1lIg0KY29sbmFtZXMoZGF0YS5OSEJFKVsxXSA8LSAiR2VuZUlkIg0KDQp3cml0ZS50YWJsZShkYXRhLk5IQkUsIGZpbGU9ImRhdGEvZGVnLWRhdGEudHh0IiwgcXVvdGU9RkFMU0UsIHNlcD0iXHQiLCByb3cubmFtZXMgPSBGQUxTRSwgY29sLm5hbWVzPVRSVUUpDQpgYGANCg0KDQo+IExldCdzIGV4cGxvcmUgdGhlIGRpZmZlcmVudGlhbCBnZW5lIGV4cHJlc3Npb24gYW5hbHlzaXMgcmVzdWx0DQoNCi0gKipRMioqOiBIb3cgbWFueSBnZW5lcyBhcmUgc2lnbmlmaWNhbnRseSB1cC0gb3IgZG93bi1yZWd1bGF0ZWQgYWZ0ZXIgQ09WSUQxOSBpbmZlY3Rpb24/IChmaWx0ZXIgZGF0YS5OSEJFKQ0KLSAqKlEzKio6IFdoeSBkbyBzb21lIGdlbmVzIGhhdmUgTkEgdmFsdWVzPyAoY2hlY2s6IGh0dHBzOi8vYmlvY29uZHVjdG9yLm9yZy9wYWNrYWdlcy9yZWxlYXNlL2Jpb2MvdmlnbmV0dGVzL0RFU2VxMi9pbnN0L2RvYy9ERVNlcTIuaHRtbCN3aHktYXJlLXNvbWUtcC12YWx1ZXMtc2V0LXRvLW5hKQ0KDQoqKioNCg0KIyMgRGF0YSB2aXN1YWxpemF0aW9uDQoNCkxldCdzIHVzZSBhIHZvbGNhbm8gcGxvdCB0byB2aXN1YWxpemUgdGhlIHJlc3VsdCBvZiB0aGUgZGlmZmVyZW50aWFsIGdlbmUgZXhwcmVzc2lvbiBhbmFseXNpcyByZXN1bHQgYW5kIHNhdmUgdGhlIGRhdGEgdGFibGUgaW4gYSBmaWxlIHRvIGtlZXAgYSByZWNvcmQuIA0KDQpgYGB7ciBmaWcxLCBmaWcud2lkdGg9OCwgZmlnLmhlaWdodD02fQ0KRW5oYW5jZWRWb2xjYW5vKGRhdGEucmVzLmRmLCB0aXRsZSA9ICJOSEJFIGNlbGwgbGluZSIsIGxhYiA9IGRhdGEucmVzLmRmJEdlbmVJRCwgeCA9ICdsb2cyRm9sZENoYW5nZScsIHkgPSAncHZhbHVlJywgcEN1dG9mZiA9IDAuMDUsIEZDY3V0b2ZmID0gMC41ODUsIGxhYlNpemUgPSAzKQ0KDQp3cml0ZS50YWJsZShkYXRhLk5IQkUsIGZpbGU9IkRFR19EYXRhLnR4dCIsIHNlcD0iXHQiLCBxdW90ZT1GQUxTRSwgcm93Lm5hbWVzID0gRkFMU0UpDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTQqKjogQXJlIHRoZXJlIG1vcmUgdXAtIG9yIGRvd24tcmVndWxhdGVkIGdlbmVzPyBXaGF0IGN1dG9mZnMgaGF2ZSBiZWVuIHVzZWQgZm9yIHB2YWx1ZSBhbmQgbG9nMkZDIChzZWUgbGluZSAxMzIpPw0KLSAqKlE1Kio6IFdoYXQgYXJlIHRoZSBtb3N0IHNpZ25pZmljYW50bHkgY2hhbmdlZCBnZW5lcz8gRG8gYSBxdWljayBQdWJtZWQgc2VhcmNoIHRvIHNlZSBpZiB0aGV5IGhhdmUgYSBrbm93biBsaW5rIHRvIENPVklEMTkuIA0KDQoqKioNCg0KIyMgUGF0aHdheSBjb2xsZWN0aW9uDQoNCldlIHdhbnQgdG8gcGVyZm9ybSBwYXRod2F5IGVucmljaG1lbnQgd2l0aCB0aGUgZ2VuZSBzZXRzIG9mIGFsbCBwYXRod2F5IG1vZGVscyBpbiBXaWtpUGF0aHdheXMgKGh1bWFuIG9ubHkpIGFuZCB0aGUgQ09WSUQtMTkgRGlzZWFzZSBNYXAgbWFwcy4NCg0KYGBge3J9DQojIGNvbWJpbmUgV2lraVBhdGh3YXlzIGFuZCBDT1ZJRDE5IERpc2Vhc2UgTWFwIGdlbmUgc2V0cw0Kd3AyZ2VuZSA8LSByZWFkUGF0aHdheUdNVCgiZGF0YS93aWtpcGF0aHdheXMtMjAyMTA3MTAtZ210LUhvbW9fc2FwaWVucy5nbXQiKQ0KZG0yZ2VuZSA8LSByZWFkUGF0aHdheUdNVCgiZGF0YS9DT1ZJRDE5X0Rpc2Vhc2VNYXBfSnVuZTIwMjEuZ210IikNCnB3eTJnZW5lIDwtIGRwbHlyOjpiaW5kX3Jvd3Mod3AyZ2VuZSwgZG0yZ2VuZSkNCg0Kd3BpZDJnZW5lIDwtIHB3eTJnZW5lICU+JSBkcGx5cjo6c2VsZWN0KHdwaWQsZ2VuZSkgI1RFUk0yR0VORQ0Kd3BpZDJuYW1lIDwtIHVuaXF1ZShwd3kyZ2VuZSAlPiUgZHBseXI6OnNlbGVjdCh3cGlkLG5hbWUpKSAjVEVSTTJOQU1FDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTYqKjogVGhlIFdpa2lQYXRod2F5cyBodW1hbiBjb2xsZWN0aW9uIGFuZCB0aGUgRGlzZWFzZSBNYXAgaGF2ZSBiZWVuIGNvbWJpbmVkLiBIb3cgbWFueSBwYXRod2F5cyBhcmUgaW4gdGhlIGNvbGxlY3Rpb24/ICh3cGlkMm5hbWUpDQoNCioqKg0KDQojIyBQYXRod2F5IGVucmljaG1lbnQNCg0KVGhlIGNsdXN0ZXJQcm9maWxlciBSLXBhY2thZ2UgaXMgdXNlZCB0byBwZXJmb3JtIG92ZXJyZXByZXNlbnRhdGlvbiBhbmFseXNpcyAoT1JBKS4gVGhlIGZ1bmN0aW9uIGNhbiBiZSBlYXNpbHkgcmVwbGFjZWQgdG8gdXNlIG90aGVyIGVucmljaG1lbnQgbWV0aG9kcyAoR1NFQSAvIHJTRUEgLyBldGMpLiANCg0KYGBge3J9DQpia2dkLmdlbmVzIDwtIHVuaXF1ZShkYXRhLk5IQkVbLGMoMSwyKV0pDQoNCiMgVE9ETyEgY29tcGxldGUgdGhlIGNvZGUgdG8gZXh0cmFjdCB0aGUgZGlmZmVyZW50aWFsbHkgZXhwcmVzc2VkIGdlbmVzIGluIGRhdGEuTkhCRSAoZGVjaWRlIHdoYXQgY3V0b2ZmIGZvciBwdmFsdWUgYW5kIGxvZzJGQyB5b3Ugd291bGQgY2hvb3NlKQ0KZGVnIDwtIC4uLj8uLi4NCg0KZXdwIDwtIGNsdXN0ZXJQcm9maWxlcjo6ZW5yaWNoZXIoDQogIGRlZyRHZW5lSWQsDQogIHVuaXZlcnNlID0gYmtnZC5nZW5lcyRHZW5lSWQsDQogIHBBZGp1c3RNZXRob2QgPSAiZmRyIiwNCiAgcHZhbHVlQ3V0b2ZmID0gMC4wNSwNCiAgVEVSTTJHRU5FID0gd3BpZDJnZW5lLA0KICBURVJNMk5BTUUgPSB3cGlkMm5hbWUpDQoNCmV3cC5yZXMgPC0gYXMuZGF0YS5mcmFtZShld3ApIA0KYGBgDQoNCj4gSW50ZXJwcmV0YXRpb24NCg0KLSAqKlE3Kio6IFdoaWNoIGN1dG9mZiBmb3IgZGVnIGRpZCB5b3UgY2hvb3NlIGFuZCB3aHk/DQotICoqUTgqKjogSG93IG1hbnkgb2YgdGhlIG1lYXN1cmVkIGFuZCBkaWZmZXJlbnRpYWxseSBleHByZXNzZWQgZ2VuZXMgYXJlIGFjdHVhbGx5IHByZXNlbnQgaW4gYXQgbGVhc3Qgb25lIG9mIHRoZSBwYXRod2F5IG1vZGVscyAtIGFjdHVhbCBiYWNrZ3JvdW5kIGxpc3Q/IEhpbnQ6IGluZm9ybWF0aW9uIGlzIGF2YWlsYWJsZSBpbiB0aGUgZXdwIG9iamVjdC4NCiNsZW5ndGgoZXdwQHVuaXZlcnNlKQ0KI2xlbmd0aChkZWckR2VuZUlkW2RlZyRHZW5lSWQgJWluJSB1bmlxdWUod3AyZ2VuZSRnZW5lKV0pDQoNCioqKg0KDQojIyBWaXN1YWxpemUgZW5yaWNobWVudCBhbmFseXNpcyByZXN1bHQNCg0KRW5yaWNobWVudCBhbmFseXNpcyByZXN1bHRzIGFyZSBvZnRlbiB2aXN1YWxpemVkIGluIHRhYmxlcy4gWW91IGNhbiBhbHNvIHVzZSBhIGJhcnBsb3QsIGRvdHBsb3Qgb3IgZW1hcHBsb3QgaWYgdXNlZnVsLiAgDQoNCmBgYHtyIGZpZzIsIGZpZy53aWR0aD03LCBmaWcuaGVpZ2h0PTd9DQpnZ3Bsb3QoZXdwWzE6ZGltKGV3cC5yZXMpWzFdXSwgYWVzKHg9cmVvcmRlcihEZXNjcmlwdGlvbiwgLXB2YWx1ZSksIHk9Q291bnQpKSArDQogIGdlb21fYmFyKHN0YXQgPSJpZGVudGl0eSIsIGZpbGw9IiNCQThDRDciKSArDQogIGNvb3JkX2ZsaXAoKSArDQogIGxhYnMoeD0iIiwgeT0iREVHIGdlbmUgY291bnQiLCBmaWxsPSIiKSArDQogIHRoZW1lKGF4aXMudGV4dD1lbGVtZW50X3RleHQoc2l6ZT0xMCkpICsgDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbj0ibm9uZSIpDQoNCndyaXRlLnRhYmxlKGV3cC5yZXMsIGZpbGU9ImVucmljaF9yZXMudHh0Iiwgc2VwPSJcdCIsIHF1b3RlPUZBTFNFLCByb3cubmFtZXMgPSBGQUxTRSkNCmBgYA0KDQo+IEludGVycHJldGF0aW9uDQoNCi0gKipROSoqOiBJZiB5b3UgbG9vayBhdCB0aGUgbGlzdCBvZiBwYXRod2F5cyBhZmZlY3RlZCwgd2hhdCBraW5kIG9mIHBhdGh3YXlzIHNob3cgdXA/IERvIHlvdSBzZWUgRGlzZWFzZSBNYXAgcGF0aHdheXMgKHN0YXJ0aW5nIHdpdGggTUlORVJWQSk/IA0KDQoqKioNCg0KIyBQYXRod2F5IGRhdGEgdmlzdWFsaXphdGlvbg0KDQpUaGUgcGF0aHdheXMgY2FuIHRoZW4gYmUgdmlzdWFsaXplZCB3aXRoIHRoZSBnZW5lIGV4cHJlc3Npb24gZGF0YSBhcyBzaG93biB3aXRoIHRoZSANCiJUeXBlIEkgSW50ZXJmZXJvbiBJbmR1Y3Rpb24gYW5kIFNpZ25hbGluZyBEdXJpbmcgU0FSUy1Db1YtMiBJbmZlY3Rpb24iIChXUDQ4NjgpIHBhdGh3YXkgZnJvbSB0aGUgV2lraVBhdGh3YXlzIENPVklELTE5IHBvcnRhbC4gDQoNCllvdSBjYW4gcmVwZWF0IHRoZSBwcm9jZXNzIHdpdGggYW55IG9mIHRoZSBXaWtpUGF0aHdheXMgcGF0aHdheXMuDQoNCmBgYHtyfQ0KUkN5Mzo6Y3l0b3NjYXBlUGluZygpDQppbnN0YWxsQXBwKCdXaWtpUGF0aHdheXMnKSANCg0KIyBvcGVuIHBhdGh3YXkgaW4gQ3l0b3NjYXBlDQpSQ3kzOjpjb21tYW5kc1J1bignd2lraXBhdGh3YXlzIGltcG9ydC1hcy1wYXRod2F5IGlkPVdQNDg2OCcpIA0KdG9nZ2xlR3JhcGhpY3NEZXRhaWxzKCkNCmxvYWRUYWJsZURhdGEoZGF0YS5OSEJFLCBkYXRhLmtleS5jb2x1bW4gPSAiRU5TRU1CTCIsIHRhYmxlLmtleS5jb2x1bW4gPSAiRW5zZW1ibCIpDQoNCiMgYXBwbHkgdmlzdWFsIHN0eWxlIHdpdGggP3NldE5vZGVDb2xvck1hcHBpbmcNCiMgY3JlYXRlIGEgZ3JhZGllbnQgdmlzdWFsaXphdGlvbiBmb3IgY29sdW1uOiBsb2cyRm9sZENoYW5nZQ0KIyBJbXBvcnRhbnQgYWRkOiBzdHlsZS5uYW1lPSJXaWtpUGF0aHdheXMiDQojIFRPRE8hDQpzZXROb2RlQ29sb3JNYXBwaW5nKC4uLj8uLi4pDQoNClJDeTM6OnNldFZpc3VhbFN0eWxlKCJXaWtpUGF0aHdheXMiKQ0KDQpgYGANCg0KPiBJbnRlcnByZXRhdGlvbg0KDQotICoqUTEwKio6IFdoaWNoIGdyYWRpZW50IGRpZCB5b3UgY2hvb3NlIGZvciBsb2cyRkMgYW5kIHdoeT8NCi0gKipRMTEqKjogSXMgdGhlIFR5cGUgSSBpbnRlcmZlcm9uIGluZHVjdGlvbiBwYXRod2F5IHVwLSBvciBkb3duLXJlZ3VsYXRlZCBhZnRlciBDT1ZJRDE5IGluZmVjdGlvbj8gSXMgdGhhdCBhcyBleHBlY3RlZD8gDQoNCipOb3RlKjogSWYgeW91IHdhbnQgdG8gdmlzdWFsaXplIHRoZSBkYXRhIG9uIHRoZSBwYXRod2F5cyBmcm9tIHRoZSBEaXNlYXNlIE1hcCwgeW91IG5lZWQgdG8gZXhwb3J0IHRoZSBwYXRod2F5IG1vZGVsIGFzIGFuIFNCTUwgZmlsZSBhbmQgaW1wb3J0IGl0IGluIEN5dG9zY2FwZSB1c2luZyB0aGUgY3lTQk1MIGFwcC4gQWx0ZXJuYXRpdmVseSwgeW91IGNhbiByZXF1ZXN0IGFuIGFjY291bnQgZm9yIE1JTkVSVkEgYW5kIHVwbG9hZCB5b3VyIG93biBkYXRhc2V0IGFuZCBjcmVhdGUgYW4gb3ZlcmxheSBvbiB0aGUgbWFwIChodHRwczovL2NvdmlkMTltYXAuZWxpeGlyLWx1eGVtYm91cmcub3JnL21pbmVydmEvaW5kZXgueGh0bWw/aWQ9Y292aWQxOV9tYXBfMTdKdW4yMSA+IE9WRVJMQVlTKS4gDQoNCg0KKioqIA0KDQojIyBEcnVnIHRhcmdldCBpbmZvcm1hdGlvbg0KDQpOZXh0LCB3ZSB3aWxsIGFkZCBpbmZvcm1hdGlvbiBhYm91dCBrbm93biBkcnVnLXRhcmdldCBpbnRlcmFjdGlvbnMgb2YgdGhlIHBhdGh3YXkgb2YgaW50ZXJlc3QuIFdlIHdpbGwgaW1wb3J0IHRoZSBwYXRod2F5IGFzIGEgbmV0d29yayBhbmQgdGhlbiBleHRlbmQgaXQgd2l0aCBkcnVnLXRhcmdldCBpbmZvcm1hdGlvbiBmcm9tIERydWdCYW5rIHVzaW5nIHRoZSBDeVRhcmdldExpbmtlciBhcHAuDQoNCmBgYHtyfQ0KUkN5Mzo6Y3l0b3NjYXBlUGluZygpDQppbnN0YWxsQXBwKCdDeVRhcmdldExpbmtlcicpIA0KaW5zdGFsbEFwcCgnV2lraVBhdGh3YXlzJykNCg0KUkN5Mzo6Y29tbWFuZHNSdW4oJ3dpa2lwYXRod2F5cyBpbXBvcnQtYXMtbmV0d29yayBpZD1XUDQ4NjgnKSANCnRvZ2dsZUdyYXBoaWNzRGV0YWlscygpDQoNCmRydWdzIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAiZGF0YS9kcnVnYmFuay01LjEuMC54Z21tbCIpDQoNCiMgcnVuIEN5VGFyZ2V0TGlua2VyDQpjb21tYW5kc1J1bihwYXN0ZTAoJ2N5dGFyZ2V0bGlua2VyIGV4dGVuZCBpZEF0dHJpYnV0ZT0iRW5zZW1ibCIgbGlua1NldEZpbGVzPSInLCBkcnVncywgJyInKSkNCmNvbW1hbmRzUnVuKCdjeXRhcmdldGxpbmtlciBhcHBseUxheW91dCBuZXR3b3JrPSJjdXJyZW50IicpDQpSQ3kzOjpzZXRWaXN1YWxTdHlsZSgiV2lraVBhdGh3YXlzLUFzLU5ldHdvcmsiKQ0KDQojbGV0J3MgY2hhbmdlIHRoZSB2aXN1YWxpemF0aW9uIG9mIHRoZSBkcnVncyBpbiB0aGUgbmV0d29yayB1c2luZyB0aGUgQnlQYXNzIG9wdGlvbg0Kc2VsZWN0ZWQgPC0gUkN5Mzo6c2VsZWN0Tm9kZXMobm9kZXM9ImRydWciLCBieS5jb2wgPSAiQ1RMLlR5cGUiKQ0KUkN5Mzo6c2V0Tm9kZVNoYXBlQnlwYXNzKG5vZGUubmFtZXMgPSBzZWxlY3RlZCRub2RlcywgbmV3LnNoYXBlcyA9ICJUcmlhbmdsZSIpDQpSQ3kzOjpzZXROb2RlQm9yZGVyQ29sb3JCeXBhc3Mobm9kZS5uYW1lcyA9IHNlbGVjdGVkJG5vZGVzLCAiIzk5MDBGRiIpDQpSQ3kzOjpzZXROb2RlQm9yZGVyV2lkdGhCeXBhc3Mobm9kZS5uYW1lcyA9IHNlbGVjdGVkJG5vZGVzLCBuZXcuc2l6ZXMgPSA1KQ0KUkN5Mzo6Y2xlYXJTZWxlY3Rpb24oKQ0KDQojIFRPRE86IFZJU1VBTCBTVFlMRQ0KIyBhZGFwdCB0aGUgdmlzdWFsIHN0eWxlIHRvIGFsc28gc2hvdyB0aGUgZGlmZmVyZW50aWFsIGdlbmUgZXhwcmVzc2lvbiBhcyB0aGUgbm9kZSBmaWxsIGNvbG9yDQoNCmBgYA0KDQo+IEludGVycHJldGF0aW9uDQoNCi0gKipRMTIqKjogQXJlIHRoZXJlIHByb3RlaW5zIHRhcmdldGVkIGJ5IG1hbnkga25vd24gZHJ1Z3M/IENhbiB5b3UgZmluZCBzdXBwb3J0aW5nIGxpdGVyYXR1cmUgcmVnYXJkaW5nIHRoZXNlIGdlbmVzIG9yIGRydWdzIGluIHRoZSBjb250ZXh0IG9mIENPVklEMTk/IA0KDQoqKioNCg0KIyMgU2F2ZSBDeXRvc2NhcGUgb3V0cHV0IGFuZCBzZXNzaW9uDQoNCmBgYHtyfQ0KIyBTYXZpbmcgb3V0cHV0DQpwbmcuZmlsZSA8LSBmaWxlLnBhdGgoZ2V0d2QoKSwgInBhdGh3YXktdml6LnBuZyIpDQpleHBvcnRJbWFnZShwbmcuZmlsZSwnUE5HJywgem9vbSA9IDUwMCkNCmN5cy5maWxlIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAicGF0aHdheS12aXouY3lzIikNCnNhdmVTZXNzaW9uKGN5cy5maWxlKSANCg0KI2NvbW1lbnQgZm9sbG93aW5nIGxpbmUgaWYgeW91IHdhbnQgdG8gbWFuaXB1bGF0ZSB0aGUgdmlzdWFsaXphdGlvbiBpbiBDeXRvc2NhcGUNClJDeTM6OmNsb3NlU2Vzc2lvbihzYXZlLmJlZm9yZS5jbG9zaW5nID0gRikNCmBgYA==</div>
 
 
 
