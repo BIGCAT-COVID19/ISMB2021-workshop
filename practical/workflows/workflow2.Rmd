@@ -114,7 +114,13 @@ commandsRun('cytargetlinker applyLayout network="current"')
 commandsRun('cytargetlinker applyVisualstyle network="current"')
 RCy3::setNodeLabelMapping("display name", style.name="CyTargetLinker")
 
-# TODO: adapt the visual style to also show the differential gene expression as the node fill color
+# there is an issue in the latest version with visualization of the added edges - the workaround below solves this for now
+RCy3::cloneNetwork()
+RCy3::setVisualStyle("default")
+RCy3::setVisualStyle("CyTargetLinker")
+
+# TODO: VISUAL STYLE
+# adapt the visual style to also show the differential gene expression as the node fill color
 
 ```
 
