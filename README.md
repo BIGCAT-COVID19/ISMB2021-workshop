@@ -33,7 +33,7 @@
 |  | 16:00 UTC | Workflow 2 | Martina Kutmon | [Practical](practical/workflow2.md) |
 |  | 16:45 UTC | Break | |  |
 |  | 17:00 UTC | Workflow 3 | Martina Kutmon | [Practical](practical/workflow3.md) |
-|  | 17:45 UTC | Wrap up day 2 | Lauren Dupuis | Slides |
+|  | 17:45 UTC | Wrap up day 2 | Lauren Dupuis | [Slides](presentations/Wrap-up_Day2.pdf) |
 |  | 18:15 UTC | Q&A | all | |
 
 <hr/>
