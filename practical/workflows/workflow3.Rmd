@@ -1,0 +1,197 @@
+---
+title: "ISMB2021 Tutorial 8 - Workflow 3"
+output: html_notebook
+author: "Martina Summer-Kutmon"
+date: "22 July 2021"
+version: 1.0
+license: "MIT License"
+---
+
+# General instructions (read before running the code snippets)
+In the third workflow, we will look at the gene overlap between the COVID pathways and analyse the network topology. Additionally, we will visualize tissue-specific proteomics data from COVID19 patients and look at the differences. 
+
+* The script contains xxx code snippets which should be run one after the other. 
+* Make sure all the required packages are installed beforehand (BiocManager::install(...)). 
+* Make sure you have Cytoscape installed (version 3.8.0+) and running before you start running the script. 
+
+*** 
+
+# Setup
+
+Loading libraries
+```{r}
+options(connectionObserver = NULL)
+
+library(dplyr)
+library(rWikiPathways)
+library(RCy3)
+library(RColorBrewer)
+library(rstudioapi)
+library(clusterProfiler)
+```
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+```
+
+*** 
+
+## Create overlap network
+
+We will integrate the COVID19 Disease Map and WikiPathways COVID pathways in a pathway-gene network. 
+
+
+```{r}
+RCy3::cytoscapePing()
+
+# combine WikiPathways and COVID19 Disease Map gene sets
+wp2gene <- readPathwayGMT("data/wikipathways-20210710-gmt-Homo_sapiens.gmt")
+pwy.covid <- rWikiPathways::getPathwayIdsByCurationTag("Curation:COVID19")
+wp2gene.filt <- wp2gene[ wp2gene$wpid %in% pwy.covid,]
+
+dm2gene <- readPathwayGMT("data/COVID19_DiseaseMap_June2021.gmt")
+pwy2gene <- dplyr::bind_rows(wp2gene.filt, dm2gene)
+# edge list pathway > gene
+edges <- pwy2gene[,c(3,5)]
+colnames(edges) <- c("source","target")
+
+pwys <- unique(pwy2gene[,c(3,1)])
+colnames(pwys) <- c("id", "name")
+pwys$type <- "pathway"
+
+genes <- as.data.frame(unique(pwy2gene[,c(5)]))
+colnames(genes) <- c("id")
+genes$type <- "gene"
+
+nodes <- dplyr::bind_rows(genes,pwys)
+
+RCy3::createNetworkFromDataFrames(nodes = nodes, edges=unique(edges), title="overlap network")
+
+# in the following lines, you will see how you can get the gene names for the Entrez Gene identifiers and add them to the node table as a label
+# map Entrez Gene to HGNC Gene symbols
+RCy3::mapTableColumn("id","Human", "Entrez Gene","HGNC")
+
+table <- RCy3::getTableColumns(columns = c("id","name","HGNC"))
+table$label <- ifelse(is.na(table$name), table$HGNC, table$name)
+table$label <- ifelse(is.na(table$label), table$id, table$label)
+
+RCy3::loadTableData(table[,c(1,4)], data.key.column = "id", table.key.column = "id")
+
+RCy3::analyzeNetwork(directed=TRUE)
+```
+
+> Let's explore the network
+
+- **Q1**: How many genes and pathways are in the network? 
+- **Q2**: Are there genes with a very high in-degree (present in many pathways)? Are they associated with COVID19 (check online)? 
+
+***
+
+## Network visualization
+
+Next, I want you to think about the network visualization. How do you want to visualize the different node types? Size, shape? What layout works best? Are there any network properties that you want to show in the visualization (degree, betweenness)?
+The only requirement - do not use the fill color! We will use that for data visualization later. 
+
+```{r}
+# TODO: come up with you own visualization
+RCy3::createVisualStyle("my_style")
+
+# ... TODO: ADD VISUALIZATION OPTIONS ...
+
+RCy3::setVisualStyle("my_style")
+
+```
+
+> Visualization
+
+- **Q3**: Show your result in the wrap-up!
+
+***
+
+## Tissue-specific proteomics data visualization
+
+Now we will visualize proteomics data from COVID19 patients (baseline expression) from lung, liver and kidney on the overlap network and create an animation to see how the network changes. 
+
+
+```{r}
+RCy3::installApp("CyAnimator")
+
+data <- read.csv(file="data/proteomics.txt", header=TRUE, sep="\t")
+data[,3:14] <- log10(data[,3:14] +1)
+
+RCy3::loadTableData(data, data.key.column = "Gene.name", table.key.column = "HGNC")
+
+RCy3::copyVisualStyle("my_style", "my_style_lung_covid")
+RCy3::setNodeColorMapping(table.column = "lung_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_lung_covid")
+RCy3::setVisualStyle("my_style_lung_covid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+
+RCy3::copyVisualStyle("my_style", "my_style_lung_noncovid")
+RCy3::setNodeColorMapping(table.column = "lung_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_lung_noncovid")
+RCy3::setVisualStyle("my_style_lung_noncovid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+
+RCy3::copyVisualStyle("my_style", "my_style_liver_covid")
+RCy3::setNodeColorMapping(table.column = "liver_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_liver_covid")
+RCy3::setVisualStyle("my_style_liver_covid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+
+RCy3::copyVisualStyle("my_style", "my_style_liver_noncovid")
+RCy3::setNodeColorMapping(table.column = "liver_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_liver_noncovid")
+RCy3::setVisualStyle("my_style_liver_noncovid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+
+RCy3::copyVisualStyle("my_style", "my_style_kidney_covid")
+RCy3::setNodeColorMapping(table.column = "kidney_C1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_kidney_covid")
+RCy3::setVisualStyle("my_style_kidney_covid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+
+RCy3::copyVisualStyle("my_style", "my_style_kidney_noncovid")
+RCy3::setNodeColorMapping(table.column = "kidney_NC1", table.column.values = c(0,1), colors = c("#FFFFFF","#440154"), mapping.type = "c", style.name = "my_style_kidney_noncovid")
+RCy3::setVisualStyle("my_style_kidney_noncovid")
+RCy3::commandsRun('cyanimator capture frame interpolate=1 network=\"current\"') 
+RCy3::commandsRun('cyanimator list frames network=\"current\"') 
+
+
+RCy3::commandsRun('cyanimator record outputDir=\"C:/Users/martina.kutmon/Downloads/test/"') 
+
+```
+
+> Interpretation
+
+- **Q4**: Check the expression of proteins in covid and non-covid patients by checking the different styles. Do you see big differences? Do you see differences between the tissues?
+
+***
+
+## Tissue-specific proteomics data visualization v2
+
+We can also visualize and compare the tissue expression in a different way in one visualization.
+
+```{r}
+RCy3::installApp("enhancedGraphics")
+RCy3::copyVisualStyle("my_style", "my_style_heatmap")
+
+RCy3::setNodeCustomHeatMapChart(c("lung_C1","lung_NC1","liver_C1","liver_NC1","kidney_C1","kidney_NC1"), slot = 2, style.name = "my_style_heatmap")
+
+# ... TODO: add other visualization options to make it prettier ...
+
+RCy3::setVisualStyle("my_style_heatmap")
+
+
+```
+- **Q5**: Does that make interpretation easier? What do you see biologically? Try to hide genes that are not expressed to improve readability (use filters!)
+
+***
+
+## Save Cytoscape output and session
+
+```{r}
+# Saving output
+png.file <- file.path(getwd(), "overlap-analysis.png")
+exportImage(png.file,'PNG', zoom = 500)
+cys.file <- file.path(getwd(), "overlap-analysis.cys")
+saveSession(cys.file) 
+
+#comment following line if you want to manipulate the visualization in Cytoscape
+RCy3::closeSession(save.before.closing = F)
+```
