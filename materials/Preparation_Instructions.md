@@ -25,6 +25,9 @@ BiocManager::install("dplyr")
 BiocManager::install("tidyverse") 
 BiocManager::install("clusterProfiler") 
 BiocManager::install("DESeq2") 
+BiocManager::install("rstudioapi") 
+BiocManager::install("readr") 
+BiocManager::install("data.table")
 ```
 
 <hr/>
